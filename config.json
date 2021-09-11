@@ -1,0 +1,36 @@
+{
+  "name": {
+    "zh-cn": "Sentry",
+    "en": "Sentry"
+  },
+  "description": {
+    "zh-cn": "Sentry 库文件。",
+    "en": "Sentry libraries."
+  },
+  "author": "weiyanfeng",
+  "email": "weiyanfengv@gmail.com",
+  "license": "MIT",
+  "isTest": true,
+  "isBoard": false,
+  "id": "Sentry",
+  "platform": ["win", "mac", "web"],
+  "version": "0.0.1",
+  "asset": {
+    "arduinoC": {
+      "dir": "arduinoC/",
+      "version": "1.0.0",
+      "board": [
+        "arduino","arduinonano","leonardo","mega2560","microbit", "esp32"
+      ],
+      "main": "main.ts"
+    },
+    "microPython":{
+      "dir": "microPython/",
+      "version": "0.0.1",
+      "board": [
+        "microbit", "esp32"
+      ],
+      "main": "main.ts"      
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+	"ADDR":{
+		"menu":[["0X60","0X60"],["0X61","0X61"]],
+		"default_SentryBegin_ADDR":"1"
+	},
+	"MODE":{
+		"menu":[["i2c","i2c"],["uart1","uart1"]],
+		"default_SentryBegin_MODE":"1"
+	}
+}
