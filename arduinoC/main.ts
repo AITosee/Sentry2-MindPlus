@@ -98,13 +98,53 @@ namespace Sentry {
         let num = parameter.NUM.code;
         Generator.addCode(`sentry.SetParamNum(${vision_type},${num});`);
     }
-    //% block="Sentry SetParam" blockType="command"
-    //% VISION_TYPE.shadow="dropdown" VISION_TYPE.options="VISION"
-    //% VISION_ID.shadow="number"
-    export function SetParam(parameter: any) {
-        Generator.addCode(`sentry.SetParam(${0});`);
-    }
+    //% block="Set color parameter [NUM] ROI area center point abscissa [XVALUE] ordinate [YVALUE] width [WIDTH] height [HIGHT]"
+    //% NUM.shadow="range"   NUM.params.min=0    NUM.params.max=25    NUM.defl=0
+    //% XVALUE.shadow="number" 
+    //% YVALUE.shadow="number" 
+    //% WIDTH.shadow="number" 
+    //% HIGHT.shadow="number" 
+    export function SetColorParam(parameter: any) {
+        let num = parameter.NUM.code;
+        let x = parameter.XVALUE.code;
+        let y = parameter.YVALUE.code;
+        let w = parameter.WIDTH.code;
+        let h = parameter.HIGHT.code;
 
+        Generator.addObject("param_obj", "sentry_object_t", `param;`);
+        Generator.addCode(`param.x_value = ${x};`);
+        Generator.addCode(`param.y_value = ${y};`);
+        Generator.addCode(`param.width = ${w};`);
+        Generator.addCode(`param.height = ${h};`);
+        Generator.addCode(`sentry.SetParam(kVisionFace,&param,${num});`);
+    }
+    //% block="Set color block detection parameter [NUM] minimum width [WIDTH] minimum height [HIGHT] to detect color [AIM_COLOR]" blockType="command"
+    //% NUM.shadow="range"   NUM.params.min=0    NUM.params.max=25    NUM.defl=0
+    //% WIDTH.shadow="number" 
+    //% HIGHT.shadow="number" 
+    //% AIM_COLOR.shadow="dropdown" AIM_COLOR.options="AIM_COLOR"
+    export function SetBlobParam(parameter: any) {
+        let num = parameter.NUM.code;
+        let l = parameter.AIM_COLOR.code;
+        let w = parameter.WIDTH.code;
+        let h = parameter.HIGHT.code;
+
+        Generator.addObject("param_obj", "sentry_object_t", `param;`);
+        Generator.addCode(`param.width = ${w};`);
+        Generator.addCode(`param.height = ${h};`);
+        Generator.addCode(`param.label = ${l};`);
+        Generator.addCode(`sentry.SetParam(kVisionFace,&param,${num});`);
+    }
+    //% block="Set face recognition [NUM] label [CARD_LABLE]" blockType="command"
+    //% NUM.shadow="range"   NUM.params.min=0    NUM.params.max=25    NUM.defl=0
+    //% CARD_LABLE.shadow="number"   CARD_LABLE.defl=0    
+    export function SetFaceParam(parameter: any) {
+        let num = parameter.NUM.code;
+        let l = parameter.CARD_LABLE.code;
+        Generator.addObject("param_obj", "sentry_object_t", `param;`);
+        Generator.addCode(`param.label = ${l};`);
+        Generator.addCode(`sentry.SetParam(kVisionFace,&param,${num});`);
+    }
     //% block="Sentry restart" blockType="command"
     export function SensorSetRestart(parameter: any) {
 

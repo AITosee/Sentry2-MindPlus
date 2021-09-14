@@ -24,10 +24,6 @@
             [
                 "i2c",
                 "i2c"
-            ],
-            [
-                "uart1",
-                "uart1"
             ]
         ]
     },
@@ -301,6 +297,38 @@
     },
     "COLOR_LABLE": {
         "menu": [
+            [
+                "Black",
+                "SENTRY_COLOR_BLACK"
+            ],
+            [
+                "White",
+                "SENTRY_COLOR_WHITE"
+            ],
+            [
+                "Red",
+                "SENTRY_COLOR_RED"
+            ],
+            [
+                "Green",
+                "SENTRY_COLOR_GREEN"
+            ],
+            [
+                "Blue",
+                "SENTRY_COLOR_BLUE"
+            ],
+            [
+                "Yellow",
+                "SENTRY_COLOR_YELLOW"
+            ]
+        ]
+    },
+    "AIM_COLOR": {
+        "menu": [
+            [
+                "Unkonw",
+                "0"
+            ],
             [
                 "Black",
                 "SENTRY_COLOR_BLACK"
