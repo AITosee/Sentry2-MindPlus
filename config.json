@@ -30,7 +30,10 @@
       "board": [
         "microbit", "esp32"
       ],
-      "main": "main.ts"      
+      "main": "main.ts",
+      "files": [
+        "libraries/libraries.zip"
+      ]      
     }
   }
 }

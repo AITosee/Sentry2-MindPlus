@@ -19,11 +19,63 @@
             ]
         ]
     },
-    "MODE": {
+    "UART": {
         "menu": [
             [
-                "i2c",
-                "i2c"
+                "SoftSerial",
+                "SoftSerial"
+            ],
+            [
+                "Serial1",
+                "Serial1"
+            ],
+            [
+                "Serial2",
+                "Serial2"
+            ],
+            [
+                "Serial3",
+                "Serial3"
+            ]            
+        ]
+    },
+    "TXPIN": {
+        "menu": [
+            [
+                "13",
+                "13"
+            ],
+            [
+                "15",
+                "15"
+            ]
+        ]
+    },
+    "RXPIN": {
+        "menu": [
+            [
+                "14",
+                "14"
+            ],
+            [
+                "16",
+                "16"
+            ]
+        ]
+    },
+    "SCLPIN": {
+        "menu": [
+            [
+                "P19",
+                "P19"
+            ]
+        ]
+    },
+    "SDAPIN": {
+        "menu": [
+            [
+                "P20",
+                "P20"
             ]
         ]
     },

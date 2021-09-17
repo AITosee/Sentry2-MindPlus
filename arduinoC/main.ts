@@ -3,24 +3,39 @@
 //% color="#ff9f06" iconWidth=50 iconHeight=40
 namespace Sentry {
 
-    //% block="Sentry init addr [ADDR] mode [MODE]" blockType="command"
+    //% block="Sentry init i2c mode addr [ADDR]" blockType="command"
     //% ADDR.shadow="dropdown" ADDR.options="ADDR"
-    //% MODE.shadow="dropdown" MODE.options="MODE"
-    export function Begin(parameter: any) {
+    export function BeginIIC(parameter: any) {
         let addr = parameter.ADDR.code;
-        let mode = parameter.MODE.code;
+        Generator.addInclude("ArduinoInclude", "#include <Arduino.h>");
+        Generator.addInclude("SentryInclude", "#include <Sentry.h>");
+        Generator.addInclude("WireInclude", "#include <Wire.h>");
+        Generator.addObject("SentryObject", "Sentry", `sentry;`);
+        Generator.addSetupMainTop("Wire.begin", `Wire.begin();`);
+        Generator.addSetup("sentry.begin", `sentry.begin(${addr},&Wire);`);
+    }
+
+    //% block="Sentry init [UART] TX [TXPIN] RX [RXPIN]" blockType="command"
+    //% UART.shadow="dropdown" UART.options="UART"
+    //% TXPIN.shadow="dropdown" TXPIN.options="TXPIN"
+    //% RXPIN.shadow="dropdown" RXPIN.options="RXPIN"
+    export function BeginUART(parameter: any) {
+        let uart = parameter.UART.code;
+        let txpin = parameter.TXPIN.code;
+        let rxpin = parameter.RXPIN.code;
 
         Generator.addInclude("ArduinoInclude", "#include <Arduino.h>");
         Generator.addInclude("SentryInclude", "#include <Sentry.h>");
-        if (mode == 'i2c') {
-            Generator.addInclude("WireInclude", "#include <Wire.h>");
-            Generator.addObject("SentryObject", "Sentry", `sentry;`);
-            Generator.addSetupMainTop("Wire.begin", `Wire.begin();`)
-            Generator.addSetup("sentry.begin", `sentry.begin(${addr},&Wire);`);
-        } else {
-            Generator.addSetupMainTop("Serial3.begin", `${mode}.begin(9600);`)
-            Generator.addSetup("sentry.begin", `sentry.begin(${addr},&uart);`);
+        Generator.addObject("SentryObject", "Sentry", `sentry;`);
+        
+        if (uart == "SoftSerial") {
+            Generator.addInclude("SoftwareSerialInclude", "#include <SoftwareSerial.h>");
+            Generator.addObject("SoftwareSerialObject", "SoftwareSerial ", `SoftSerial(${rxpin}, ${txpin})`);
         }
+
+        Generator.addSetupMainTop("Serial3.begin", `${uart}.begin(9600);`)
+        Generator.addSetup("sentry.begin", `sentry.begin(&${uart});`);
+
     }
 
     //% block="[VISION_STA] vision [VISION_TYPE]" blockType="command"
@@ -40,7 +55,7 @@ namespace Sentry {
     //% VISION_TYPE.shadow="dropdown" VISION_TYPE.options="VISION"    
     export function GetVisionResult(parameter: any) {
         let vision_type = parameter.VISION_TYPE.code;
-        Generator.addCode([`sentry.GetValue(${vision_type})`, Generator.ORDER_UNARY_POSTFIX]);
+        Generator.addCode([`sentry.GetValue(${vision_type}, kStatus)`, Generator.ORDER_UNARY_POSTFIX]);
     }
 
     //% block="get [VISION_TYPE] [VISION_ID] [OBJ_INFO]" blockType="reporter"
