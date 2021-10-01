@@ -1,4 +1,24 @@
 {
+    "SENTRY": {
+        "menu": [
+            [
+                "Sentry1",
+                "sentry1"
+            ],
+            [
+                "Sentry2",
+                "sentry2"
+            ],
+            [
+                "Sentry3",
+                "sentry3"
+            ],
+            [
+                "Sentry4",
+                "sentry4"
+            ]
+        ]
+    },
     "ADDR": {
         "menu": [
             [
