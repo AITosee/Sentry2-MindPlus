@@ -13,7 +13,7 @@
   "isTest": true,
   "isBoard": false,
   "id": "Sentry",
-  "platform": ["win", "mac", "web"],
+  "platform": ["win", "web"],
   "version": "0.0.1",
   "asset": {
     "arduinoC": {
@@ -28,7 +28,7 @@
       "dir": "microPython/",
       "version": "0.0.1",
       "board": [
-        "microbit", "esp32"
+         "esp32"
       ],
       "main": "main.ts",
       "files": [

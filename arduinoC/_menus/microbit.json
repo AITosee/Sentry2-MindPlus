@@ -145,7 +145,8 @@
                 "VisionMotionDetect",
                 "kVisionMotionDetect"
             ]
-        ]
+        ],
+        "default_GetValue_VISION_TYPE":"kVisionBlob"
     },
     "VISION_STA": {
         "menu": [

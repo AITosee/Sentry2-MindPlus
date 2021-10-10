@@ -9,8 +9,14 @@ namespace Sentry {
     export function BeginIIC(parameter: any) {
         let sentry = parameter.SENTRY.code;
         let addr = parameter.ADDR.code;
-
-        Generator.addImport("from mpython import *");
+        
+        if(Generator.board === 'esp32'){
+            Generator.addImport("from mpython import *");
+        }
+        else if(Generator.board === 'microbit') {
+            Generator.addImport("from microbit import *"); 
+        }
+        
         Generator.addImport("from Sentry import *");  
         Generator.addDeclaration(`${sentry}Object`,`${sentry} = Sentry(${addr})`,true);
         Generator.addCode(`${sentry}.begin(i2c)`);

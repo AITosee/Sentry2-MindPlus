@@ -1,6 +1,6 @@
 
 
-//% color="#ff9f06" iconWidth=50 iconHeight=40
+//% color="#00D88A" iconWidth=50 iconHeight=40
 namespace Sentry {
 
     //% block="[SENTRY] init i2c mode addr [ADDR]" blockType="command"
