@@ -3,7 +3,7 @@
 //% color="#ff9f06" iconWidth=50 iconHeight=40
 namespace Sentry {
 
-    //% block="[SENTRY] init i2c mode addr [ADDR]" blockType="command"
+    //% block="[SENTRY] init i2c mode addr [ADDR]" blockType="command" color="#AA278D"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
     //% ADDR.shadow="dropdown" ADDR.options="ADDR"
     export function BeginIIC(parameter: any) {
@@ -18,11 +18,11 @@ namespace Sentry {
         }
         
         Generator.addImport("from Sentry import *");  
-        Generator.addDeclaration(`${sentry}Object`,`${sentry} = Sentry(${addr})`,true);
+        Generator.addDeclaration(`${sentry}Object`,`${sentry} = Sentry2(${addr})`,true);
         Generator.addCode(`${sentry}.begin(i2c)`);
     }
 
-    //% block="[SENTRY] init [UART] TX [TXPIN] RX [RXPIN]" blockType="command"
+    //% block="[SENTRY] init [UART] TX [TXPIN] RX [RXPIN]" blockType="command" color="#AA278D"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
     //% UART.shadow="dropdown" UART.options="UART"
     //% TXPIN.shadow="dropdown" TXPIN.options="TXPIN"
@@ -37,7 +37,7 @@ namespace Sentry {
         Generator.addImport("from Sentry import *");
         Generator.addImport("from machine import Pin,UART");   
 
-        Generator.addDeclaration(`${sentry}Object`,`sentry = Sentry()`,true);
+        Generator.addDeclaration(`${sentry}Object`,`sentry = Sentry2()`,true);
         Generator.addDeclaration(`${sentry}Object_uart`,`${sentry}_uart = UART(${uart})`,true);
 
         Generator.addCode(`${sentry}.begin(${sentry}_uart)`);
@@ -298,6 +298,10 @@ namespace Sentry {
         let vision_type = parameter.VISION_TYPE.code;
         Generator.addCode(`${sentry}.VisionGetStatus(${vision_type});`);
     }
+}
+
+//% color="#AA278D" iconWidth=50 iconHeight=40
+namespace Sentry_t {
     //% block="[SENTRY] image height" blockType="reporter"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
     export function rows(parameter: any) {
