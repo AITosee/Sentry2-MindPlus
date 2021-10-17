@@ -36,7 +36,7 @@
     "Sentry.SetBlobParam|block":"[SENTRY] 设置色块检测 参数[NUM] 最小宽度[WIDTH] 最小高度[HIGHT] 待检测颜色[AIM_COLOR]",
     "Sentry.SetFaceParam|block":"[SENTRY] 设置人脸识别 [NUM] label[CARD_LABLE]",
     "Sentry.SensorSetRestart|block":"[SENTRY] 重启传感器",
-    "Sentry.LedSetColor|block":"[SENTRY] 设置[LED]算法检测到颜色为[LED_COLOR1] 未检测到颜色为[LED_COLOR2]",
+    "Sentry.LedSetColor|block":"[SENTRY] 设置LED 算法检测到颜色为[LED_COLOR1] 未检测到颜色为[LED_COLOR2]",
     "Sentry.LED_COLOR.Close|menu": "关闭",
     "Sentry.LED_COLOR.Red|menu": "红色",
     "Sentry.LED_COLOR.Green|menu": "绿色",

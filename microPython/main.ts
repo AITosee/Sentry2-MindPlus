@@ -195,18 +195,16 @@ namespace Sentry {
         Generator.addCode(`${sentry}.SensorSetRestart();`);
     }
 
-    //% block="[SENTRY] Set the [LED] algorithm to detect a color of [LED_COLOR1] and not to detect a color of [LED_COLOR2]" blockType="command"
+    //% block="[SENTRY] Set the LED algorithm to detect a color of [LED_COLOR1] and not to detect a color of [LED_COLOR2]" blockType="command"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% LED.shadow="dropdown" LED.options="LED" 
     //% LED_COLOR1.shadow="dropdown" LED_COLOR1.options="LED_COLOR"
     //% LED_COLOR2.shadow="dropdown" LED_COLOR2.options="LED_COLOR"     
     export function LedSetColor(parameter: any) {
         let sentry = parameter.SENTRY.code;
-        let led = parameter.LED.code;
         let color1 = parameter.LED_COLOR1.code;
         let color2 = parameter.LED_COLOR2.code;
 
-        Generator.addCode(`${sentry}.LedSetColor(${led},${color1},${color2});`);
+        Generator.addCode(`${sentry}.LedSetColor(${color1},${color2});`);
     }
 
     //% block="[SENTRY] Set camera [ZOOM]" blockType="command"
@@ -298,10 +296,7 @@ namespace Sentry {
         let vision_type = parameter.VISION_TYPE.code;
         Generator.addCode(`${sentry}.VisionGetStatus(${vision_type});`);
     }
-}
 
-//% color="#AA278D" iconWidth=50 iconHeight=40
-namespace Sentry_t {
     //% block="[SENTRY] image height" blockType="reporter"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
     export function rows(parameter: any) {
