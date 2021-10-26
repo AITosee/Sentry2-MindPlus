@@ -42,21 +42,13 @@
     "UART": {
         "menu": [
             [
-                "SoftSerial",
-                "SoftSerial"
-            ],
-            [
                 "Serial1",
                 "Serial1"
             ],
             [
                 "Serial2",
                 "Serial2"
-            ],
-            [
-                "Serial3",
-                "Serial3"
-            ]            
+            ]          
         ]
     },
     "TXPIN": {
@@ -354,38 +346,6 @@
     },
     "COLOR_LABLE": {
         "menu": [
-            [
-                "Black",
-                "color_label_e.kColorBlack"
-            ],
-            [
-                "White",
-                "color_label_e.kColorWhite"
-            ],
-            [
-                "Red",
-                "color_label_e.kColorRed"
-            ],
-            [
-                "Green",
-                "color_label_e.kColorGreen"
-            ],
-            [
-                "Blue",
-                "color_label_e.kColorBlue"
-            ],
-            [
-                "Yellow",
-                "color_label_e.kColorYellow"
-            ]
-        ]
-    },
-    "AIM_COLOR": {
-        "menu": [
-            [
-                "Unkonw",
-                "0"
-            ],
             [
                 "Black",
                 "color_label_e.kColorBlack"

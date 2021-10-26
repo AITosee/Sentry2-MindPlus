@@ -1,6 +1,6 @@
 
 
-//% color="#00D88A" iconWidth=50 iconHeight=40
+//% color="#ff9f06" iconWidth=50 iconHeight=40
 namespace Sentry {
 
     //% block="[SENTRY] init i2c mode addr [ADDR]" blockType="command"
@@ -12,9 +12,9 @@ namespace Sentry {
         Generator.addInclude("ArduinoInclude", "#include <Arduino.h>");
         Generator.addInclude("SentryInclude", "#include <Sentry.h>");
         Generator.addInclude("WireInclude", "#include <Wire.h>");
-        Generator.addObject(`${sentry}.Object`, "Sentry", `${sentry};`);
+        Generator.addObject(`${sentry}.Object`, "Sentry", `${sentry}(${addr});`);
         Generator.addSetupMainTop("Wire.begin", `Wire.begin();`);
-        Generator.addSetup(`${sentry}.begin`, `${sentry}.begin(${addr},&Wire);`);
+        Generator.addSetup(`${sentry}.begin`, `${sentry}.begin(&Wire);`);
     }
 
     //% block="[SENTRY] init [UART] TX [TXPIN] RX [RXPIN]" blockType="command"
@@ -123,7 +123,7 @@ namespace Sentry {
         Generator.addCode([`${sentry}.GetValue(kVisionCard,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
     }
 
-    //% block="[SENTRY] Set [VISION_TYPE] Param [NUM]" blockType="reporter"
+    //% block="[SENTRY] Set [VISION_TYPE] Param [NUM]" blockType="command"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
     //% VISION_TYPE.shadow="dropdown" VISION_TYPE.options="VISION"
     //% NUM.shadow="range"   NUM.params.min=0    NUM.params.max=25    NUM.defl=1
@@ -155,16 +155,16 @@ namespace Sentry {
         Generator.addCode(`param.height = ${h};`);
         Generator.addCode(`${sentry}.SetParam(kVisionFace,&param,${num});`);
     }
-    //% block="[SENTRY] Set color block detection parameter [NUM] minimum width [WIDTH] minimum height [HIGHT] to detect color [AIM_COLOR]" blockType="command"
+    //% block="[SENTRY] Set color block detection parameter [NUM] minimum width [WIDTH] minimum height [HIGHT] to detect color [COLOR_LABLE]" blockType="command"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
     //% NUM.shadow="range"   NUM.params.min=0    NUM.params.max=25    NUM.defl=0
     //% WIDTH.shadow="number" 
     //% HIGHT.shadow="number" 
-    //% AIM_COLOR.shadow="dropdown" AIM_COLOR.options="AIM_COLOR"
+    //% COLOR_LABLE.shadow="dropdown" COLOR_LABLE.options="COLOR_LABLE"
     export function SetBlobParam(parameter: any) {
         let sentry = parameter.SENTRY.code;
         let num = parameter.NUM.code;
-        let l = parameter.AIM_COLOR.code;
+        let l = parameter.COLOR_LABLE.code;
         let w = parameter.WIDTH.code;
         let h = parameter.HIGHT.code;
 
@@ -186,12 +186,12 @@ namespace Sentry {
         Generator.addCode(`param.label = ${l};`);
         Generator.addCode(`${sentry}.SetParam(kVisionFace,&param,${num});`);
     }
-    //% block="[SENTRY] [SENTRY] restart" blockType="command"
+    //% block="[SENTRY] set default" blockType="command"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    export function SensorSetRestart(parameter: any) {
+    export function SensorSetDefault(parameter: any) {
         let sentry = parameter.SENTRY.code;
 
-        Generator.addCode(`${sentry}.SensorSetRestart();`);
+        Generator.addCode(`${sentry}.SensorSetDefault();`);
     }
 
     //% block="[SENTRY] Set the [LED] algorithm to detect a color of [LED_COLOR1] and not to detect a color of [LED_COLOR2]" blockType="command"

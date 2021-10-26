@@ -52,9 +52,9 @@ namespace Sentry {
         let vision_type = parameter.VISION_TYPE.code;
         let vision_sta = parameter.VISION_STA.code;
         if (vision_sta == "ON") {
-            Generator.addCode(`${sentry}.VisionBegin(${vision_type});`);
+            Generator.addCode(`${sentry}.VisionBegin(${vision_type})`);
         } else {
-            Generator.addCode(`${sentry}.VisionEnd(${vision_type});`);
+            Generator.addCode(`${sentry}.VisionEnd(${vision_type})`);
         }
 
     }
@@ -88,7 +88,7 @@ namespace Sentry {
         let sentry = parameter.SENTRY.code;
         let num = parameter.NUM.code;
         let obj = parameter.OBJ_RGB_INFO.code;
-        Generator.addCode([`${sentry}.GetValue(kVisionColor,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
+        Generator.addCode([`${sentry}.GetValue(sentry_vision_e.kVisionColor,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
     }
 
     //% block="[SENTRY] Color detected [NUM] [COLOR_LABLE]" blockType="boolean"
@@ -99,7 +99,7 @@ namespace Sentry {
         let sentry = parameter.SENTRY.code;
         let num = parameter.NUM.code;
         let obj = parameter.COdLOR_LABLE.code;
-        Generator.addCode([`${sentry}.GetValue(kVisionColor,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
+        Generator.addCode([`${sentry}.GetValue(sentry_vision_e.kVisionColor,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
     }
 
     //% block="[SENTRY] get 20 Class detected [NUM] [Class20_LABLE]" blockType="boolean"
@@ -110,7 +110,7 @@ namespace Sentry {
         let sentry = parameter.SENTRY.code;
         let num = parameter.NUM.code;
         let obj = parameter.Class20_LABLE.code;
-        Generator.addCode([`${sentry}.GetValue(kVision20Classes,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
+        Generator.addCode([`${sentry}.GetValue(sentry_vision_e.kVision20Classes,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
     }
 
     //% block="[SENTRY] Card detected [NUM] [CARD_LABLE]" blockType="boolean"
@@ -121,10 +121,10 @@ namespace Sentry {
         let sentry = parameter.SENTRY.code;
         let num = parameter.NUM.code;
         let obj = parameter.CARD_LABLE.code;
-        Generator.addCode([`${sentry}.GetValue(kVisionCard,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
+        Generator.addCode([`${sentry}.GetValue(sentry_vision_e.kVisionCard,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
     }
 
-    //% block="[SENTRY] Set [VISION_TYPE] Param [NUM]" blockType="reporter"
+    //% block="[SENTRY] Set [VISION_TYPE] Param [NUM]" blockType="command"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
     //% VISION_TYPE.shadow="dropdown" VISION_TYPE.options="VISION"
     //% NUM.shadow="range"   NUM.params.min=0    NUM.params.max=25    NUM.defl=1
@@ -132,7 +132,7 @@ namespace Sentry {
         let sentry = parameter.SENTRY.code;
         let vision_type = parameter.VISION_TYPE.code;
         let num = parameter.NUM.code;
-        Generator.addCode(`${sentry}.SetParamNum(${vision_type},${num});`);
+        Generator.addCode(`${sentry}.SetParamNum(${vision_type},${num})`);
     }
     //% block="[SENTRY] Set color parameter [NUM] ROI area center point abscissa [XVALUE] ordinate [YVALUE] width [WIDTH] height [HIGHT]"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
@@ -149,31 +149,22 @@ namespace Sentry {
         let w = parameter.WIDTH.code;
         let h = parameter.HIGHT.code;
 
-        Generator.addObject("param_obj", "sentry_object_t", `param;`);
-        Generator.addCode(`param.x_value = ${x};`);
-        Generator.addCode(`param.y_value = ${y};`);
-        Generator.addCode(`param.width = ${w};`);
-        Generator.addCode(`param.height = ${h};`);
-        Generator.addCode(`${sentry}.SetParam(kVisionFace,&param,${num});`);
+        Generator.addCode(`${sentry}.SetParam(sentry_vision_e.kVisionColor,[${x}, ${y}, ${w}, ${h}, 0],${num})`);
     }
-    //% block="[SENTRY] Set color block detection parameter [NUM] minimum width [WIDTH] minimum height [HIGHT] to detect color [AIM_COLOR]" blockType="command"
+    //% block="[SENTRY] Set color block detection parameter [NUM] minimum width [WIDTH] minimum height [HIGHT] to detect color [COLOR_LABLE]" blockType="command"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
     //% NUM.shadow="range"   NUM.params.min=0    NUM.params.max=25    NUM.defl=0
     //% WIDTH.shadow="number" 
     //% HIGHT.shadow="number" 
-    //% AIM_COLOR.shadow="dropdown" AIM_COLOR.options="AIM_COLOR"
+    //% COLOR_LABLE.shadow="dropdown" COLOR_LABLE.options="COLOR_LABLE"
     export function SetBlobParam(parameter: any) {
         let sentry = parameter.SENTRY.code;
         let num = parameter.NUM.code;
-        let l = parameter.AIM_COLOR.code;
         let w = parameter.WIDTH.code;
         let h = parameter.HIGHT.code;
+        let l = parameter.COLOR_LABLE.code;
 
-        Generator.addObject("param_obj", "sentry_object_t", `param;`);
-        Generator.addCode(`param.width = ${w};`);
-        Generator.addCode(`param.height = ${h};`);
-        Generator.addCode(`param.label = ${l};`);
-        Generator.addCode(`${sentry}.SetParam(kVisionFace,&param,${num});`);
+        Generator.addCode(`${sentry}.SetParam(sentry_vision_e.kVisionBlob,[0, 0, ${w}, ${h}, ${l}],${num})`);
     }
     //% block="[SENTRY] Set face recognition [NUM] label [CARD_LABLE]" blockType="command"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
@@ -183,16 +174,16 @@ namespace Sentry {
         let sentry = parameter.SENTRY.code;
         let num = parameter.NUM.code;
         let l = parameter.CARD_LABLE.code;
-        Generator.addObject("param_obj", "sentry_object_t", `param;`);
-        Generator.addCode(`param.label = ${l};`);
-        Generator.addCode(`${sentry}.SetParam(kVisionFace,&param,${num});`);
+
+
+        Generator.addCode(`${sentry}.SetParam(sentry_vision_e.kVisionFace,[0, 0, 0, 0, ${l}],${num})`);
     }
-    //% block="[SENTRY] [SENTRY] restart" blockType="command"
+    //% block="[SENTRY] set default" blockType="command"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    export function SensorSetRestart(parameter: any) {
+    export function SensorSetDefault(parameter: any) {
         let sentry = parameter.SENTRY.code;
 
-        Generator.addCode(`${sentry}.SensorSetRestart();`);
+        Generator.addCode(`${sentry}.SensorSetDefault()`);
     }
 
     //% block="[SENTRY] Set the LED algorithm to detect a color of [LED_COLOR1] and not to detect a color of [LED_COLOR2]" blockType="command"
@@ -204,7 +195,7 @@ namespace Sentry {
         let color1 = parameter.LED_COLOR1.code;
         let color2 = parameter.LED_COLOR2.code;
 
-        Generator.addCode(`${sentry}.LedSetColor(${color1},${color2});`);
+        Generator.addCode(`${sentry}.LedSetColor(${color1},${color2})`);
     }
 
     //% block="[SENTRY] Set camera [ZOOM]" blockType="command"
@@ -213,7 +204,7 @@ namespace Sentry {
     export function CameraSetZoom(parameter: any) {
         let sentry = parameter.SENTRY.code;
         let zoom = parameter.ZOOM.code;
-        Generator.addCode(`${sentry}.CameraSetZoom(${zoom});`);
+        Generator.addCode(`${sentry}.CameraSetZoom(${zoom})`);
     }
     //% block="[SENTRY] Set camera [ROTATE]" blockType="command"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
@@ -221,7 +212,7 @@ namespace Sentry {
     export function CameraSetRotate(parameter: any) {
         let sentry = parameter.SENTRY.code;
         let rotate = parameter.ROTATE.code;
-        Generator.addCode(`${sentry}.CameraSetRotate(${rotate});`);
+        Generator.addCode(`${sentry}.CameraSetRotate(${rotate})`);
     }
 
     //% block="[SENTRY] Set camera [FPS]" blockType="command"
@@ -230,7 +221,7 @@ namespace Sentry {
     export function CameraSetFPS(parameter: any) {
         let sentry = parameter.SENTRY.code;
         let fps = parameter.FPS.code;
-        Generator.addCode(`${sentry}.CameraSetFPS(${fps});`);
+        Generator.addCode(`${sentry}.CameraSetFPS(${fps})`);
     }
     //% block="[SENTRY] Set camera [AWB]" blockType="command"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
@@ -238,7 +229,7 @@ namespace Sentry {
     export function CameraSetAwb(parameter: any) {
         let sentry = parameter.SENTRY.code;
         let awb = parameter.AWB.code;
-        Generator.addCode(`${sentry}.CameraSetAwb(${awb});`);
+        Generator.addCode(`${sentry}.CameraSetAwb(${awb})`);
     }
 
     //% block="[SENTRY] Get camera Awb" blockType="reporter"
@@ -276,7 +267,7 @@ namespace Sentry {
     export function UartSetBaudrate(parameter: any) {
         let sentry = parameter.SENTRY.code;
         let buad = parameter.BUAD.code;
-        Generator.addCode(`${sentry}.UartSetBaudrate(${buad});`);
+        Generator.addCode(`${sentry}.UartSetBaudrate(${buad})`);
     }
 
     //% block="[SENTRY] set [VISION_TYPE] default" blockType="command"
@@ -285,7 +276,7 @@ namespace Sentry {
     export function VisionSetDefault(parameter: any) {
         let sentry = parameter.SENTRY.code;
         let vision_type = parameter.VISION_TYPE.code;
-        Generator.addCode(`${sentry}.VisionSetDefault(${vision_type});`);
+        Generator.addCode(`${sentry}.VisionSetDefault(${vision_type})`);
     }
 
     //% block="[SENTRY] Get [VISION_TYPE] Status" blockType="boolean"
@@ -294,7 +285,7 @@ namespace Sentry {
     export function VisionGetStatus(parameter: any) {
         let sentry = parameter.SENTRY.code;
         let vision_type = parameter.VISION_TYPE.code;
-        Generator.addCode(`${sentry}.VisionGetStatus(${vision_type});`);
+        Generator.addCode(`${sentry}.VisionGetStatus(${vision_type})`);
     }
 
     //% block="[SENTRY] image height" blockType="reporter"
