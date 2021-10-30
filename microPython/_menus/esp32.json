@@ -3,92 +3,36 @@
         "menu": [
             [
                 "Sentry1",
-                "sentry1"
+                "0"
             ],
             [
                 "Sentry2",
-                "sentry2"
+                "1"
             ],
             [
                 "Sentry3",
-                "sentry3"
+                "2"
             ],
             [
                 "Sentry4",
-                "sentry4"
+                "3"
             ]
         ]
     },
-    "ADDR": {
+    "MODE": {
         "menu": [
             [
-                "0X60",
-                "0X60"
+                "i2c",
+                "i2c"
             ],
             [
-                "0X61",
-                "0X61"
+                "uart1",
+                "uart1"
             ],
             [
-                "0X62",
-                "0X62"
-            ],
-            [
-                "0X63",
-                "0X63"
-            ]
-        ]
-    },
-    "UART": {
-        "menu": [
-            [
-                "Serial1",
-                "Serial1"
-            ],
-            [
-                "Serial2",
-                "Serial2"
-            ]          
-        ]
-    },
-    "TXPIN": {
-        "menu": [
-            [
-                "13",
-                "13"
-            ],
-            [
-                "15",
-                "15"
-            ]
-        ]
-    },
-    "RXPIN": {
-        "menu": [
-            [
-                "14",
-                "14"
-            ],
-            [
-                "16",
-                "16"
-            ]
-        ]
-    },
-    "SCLPIN": {
-        "menu": [
-            [
-                "P19",
-                "P19"
-            ]
-        ]
-    },
-    "SDAPIN": {
-        "menu": [
-            [
-                "P20",
-                "P20"
-            ]
+                "uart2",
+                "uart2"
+            ]           
         ]
     },
     "VISION": {

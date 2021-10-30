@@ -1,8 +1,5 @@
 {
-    "Sentry.BeginIIC|block":"[SENTRY]  I2c模式初始化地址[ADDR]",
-    "Sentry.BeginUART|block":"[SENTRY]  串口模式 [UART] TX [TXPIN] RX [RXPIN]", 
-    "Sentry.UART.Serial1|menu": "串口1",
-    "Sentry.UART.Serial2|menu": "串口2", 
+    "Sentry.Begin|block":"[SENTRY] 初始化端口 [MODE]",
     "Sentry.VisionSet|block":"[SENTRY]  [VISION_STA] 算法 [VISION_TYPE]",
     "Sentry.VISION_STA.OPEN|menu": "开启",
     "Sentry.VISION_STA.CLOSE|menu": "关闭",
