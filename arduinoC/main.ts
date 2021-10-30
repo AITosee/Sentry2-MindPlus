@@ -6,16 +6,17 @@ namespace Sentry {
 
 
     //% block="Init software serial TX [TXPIN] RX [RXPIN] buadrate [BUAD] " blockType="command"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% UART.shadow="dropdown" UART.options="UART"
     //% TXPIN.shadow="dropdown" TXPIN.options="TXPIN"
     //% RXPIN.shadow="dropdown" RXPIN.options="RXPIN"
+    //% BUAD.shadow="dropdown" BUAD.options="BUAD"
     export function BeginSoftwareSerial(parameter: any) {
         let txpin = parameter.TXPIN.code;
         let rxpin = parameter.RXPIN.code;
+        let buad = parameter.BUAD.code.substr(5);
 
         Generator.addInclude("SoftwareSerialInclude", "#include <SoftwareSerial.h>");
         Generator.addObject("SoftwareSerialObject", "SoftwareSerial ", `SoftSerial(${rxpin}, ${txpin})`);
+        Generator.addSetupMainTop("SoftSerial.begin", `SoftSerial.begin(${buad});`);      
 
     }
 
@@ -28,10 +29,16 @@ namespace Sentry {
 
         Generator.addInclude("ArduinoInclude", "#include <Arduino.h>");
         Generator.addInclude("SentryInclude", "#include <Sentry.h>");
-        Generator.addInclude("WireInclude", "#include <Wire.h>");
-        Generator.addObject(`sentry${sentry}.Object`, "Sentry", `sentry${sentry}(${addr});`);
-        Generator.addSetupMainTop("Wire.begin", `Wire.begin();`);
-        Generator.addSetup(`sentry${sentry}.begin`, `sentry${sentry}.begin(&Wire);`);
+
+        if (mode == 'i2c') {
+            Generator.addInclude("WireInclude", "#include <Wire.h>");   
+            Generator.addObject(`sentry${sentry}.Object`, "Sentry", `sentry${sentry}(0x6${sentry});`);
+            Generator.addSetupMainTop("Wire.begin", `Wire.begin();`);      
+        }else{
+            Generator.addObject(`sentry${sentry}.Object`, "Sentry", `sentry${sentry}();`);
+        }
+
+        Generator.addCode(`sentry${sentry}.begin(&${mode});`);
     }
 
     //% block="[SENTRY] [VISION_STA] vision [VISION_TYPE]" blockType="command"
