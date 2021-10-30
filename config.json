@@ -20,7 +20,7 @@
       "dir": "arduinoC/",
       "version": "1.0.0",
       "board": [
-        "arduino","arduinonano","leonardo","mega2560","microbit", "esp32"
+        "arduino","arduinonano","mega2560","microbit", "esp32"
       ],
       "main": "main.ts"
     },
