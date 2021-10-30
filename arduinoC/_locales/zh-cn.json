@@ -1,5 +1,4 @@
 {
-    "Sentry.BeginSoftwareSerial|block":"初始化软件串口 TX [TXPIN] RX [RXPIN] 波特率 [BUAD] ",  
     "Sentry.Begin|block":"[SENTRY] 初始化端口 [MODE]",  
     "Sentry.VisionSet|block":"[SENTRY]  [VISION_STA] 算法 [VISION_TYPE]",
     "Sentry.VISION_STA.OPEN|menu": "开启",

@@ -3,23 +3,6 @@
 //% color="#ff9f06" iconWidth=50 iconHeight=40
 namespace Sentry {
 
-
-
-    //% block="Init software serial TX [TXPIN] RX [RXPIN] buadrate [BUAD] " blockType="command"
-    //% TXPIN.shadow="dropdown" TXPIN.options="TXPIN"
-    //% RXPIN.shadow="dropdown" RXPIN.options="RXPIN"
-    //% BUAD.shadow="dropdown" BUAD.options="BUAD"
-    export function BeginSoftwareSerial(parameter: any) {
-        let txpin = parameter.TXPIN.code;
-        let rxpin = parameter.RXPIN.code;
-        let buad = parameter.BUAD.code.substr(5);
-
-        Generator.addInclude("SoftwareSerialInclude", "#include <SoftwareSerial.h>");
-        Generator.addObject("SoftwareSerialObject", "SoftwareSerial ", `SoftSerial(${rxpin}, ${txpin})`);
-        Generator.addSetupMainTop("SoftSerial.begin", `SoftSerial.begin(${buad});`);      
-
-    }
-
     //% block="[SENTRY] init port [MODE]" blockType="command"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
     //% MODE.shadow="dropdown" MODE.options="MODE"
@@ -30,7 +13,7 @@ namespace Sentry {
         Generator.addInclude("ArduinoInclude", "#include <Arduino.h>");
         Generator.addInclude("SentryInclude", "#include <Sentry.h>");
 
-        if (mode == 'i2c') {
+        if (mode == 'Wire') {
             Generator.addInclude("WireInclude", "#include <Wire.h>");   
             Generator.addObject(`sentry${sentry}.Object`, "Sentry", `sentry${sentry}(0x6${sentry});`);
             Generator.addSetupMainTop("Wire.begin", `Wire.begin();`);      

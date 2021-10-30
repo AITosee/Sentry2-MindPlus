@@ -23,7 +23,7 @@
         "menu": [
             [
                 "i2c",
-                "i2c"
+                "Wire"
             ],
             [
                 "Serial1",
@@ -32,11 +32,7 @@
             [
                 "Serial2",
                 "Serial2"
-            ],
-            [
-                "SoftwareSerial",
-                "SoftSerial"
-            ]          
+            ]         
         ]
     },
     "TXPIN": {
