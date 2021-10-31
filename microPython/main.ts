@@ -19,7 +19,7 @@ namespace Sentry {
         
         Generator.addImport("from Sentry import *");  
         Generator.addDeclaration(`sentry${sentry}Object`,`sentry${sentry} = Sentry2(0x6${sentry})`,true);
-        Generator.addCode(`sentry${sentry}.begin(i2c)`);
+        Generator.addCode(`sentry${sentry}.begin(${mode})`);
     }
 
     //% block="[SENTRY] [VISION_STA] vision [VISION_TYPE]" blockType="command"
