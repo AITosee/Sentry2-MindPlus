@@ -118,10 +118,10 @@ namespace Sentry {
     //% block="[SENTRY] Set color parameter [NUM] ROI area center point abscissa [XVALUE] ordinate [YVALUE] width [WIDTH] height [HIGHT]"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
     //% NUM.shadow="range"   NUM.params.min=0    NUM.params.max=25    NUM.defl=0
-    //% XVALUE.shadow="number" 
-    //% YVALUE.shadow="number" 
-    //% WIDTH.shadow="number" 
-    //% HIGHT.shadow="number" 
+    //% XVALUE.shadow="number"   XVALUE.defl=160
+    //% YVALUE.shadow="number"   YVALUE.defl=120
+    //% WIDTH.shadow="number"   WIDTH.defl=8
+    //% HIGHT.shadow="number"   HIGHT.defl=8
     export function SetColorParam(parameter: any) {
         let sentry = parameter.SENTRY.code;
         let num = parameter.NUM.code;
@@ -140,8 +140,8 @@ namespace Sentry {
     //% block="[SENTRY] Set color block detection parameter [NUM] minimum width [WIDTH] minimum height [HIGHT] to detect color [COLOR_LABLE]" blockType="command"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
     //% NUM.shadow="range"   NUM.params.min=0    NUM.params.max=25    NUM.defl=0
-    //% WIDTH.shadow="number" 
-    //% HIGHT.shadow="number" 
+    //% WIDTH.shadow="number"   WIDTH.defl=8
+    //% HIGHT.shadow="number"   HIGHT.defl=8
     //% COLOR_LABLE.shadow="dropdown" COLOR_LABLE.options="COLOR_LABLE"
     export function SetBlobParam(parameter: any) {
         let sentry = parameter.SENTRY.code;
