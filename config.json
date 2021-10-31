@@ -7,14 +7,14 @@
     "zh-cn": "Sentry 库文件。",
     "en": "Sentry libraries."
   },
-  "author": "weiyanfeng",
+  "author": "Uniquemf",
   "email": "weiyanfengv@gmail.com",
   "license": "MIT",
   "isTest": true,
   "isBoard": false,
   "id": "Sentry",
   "platform": ["win", "web"],
-  "version": "0.0.1",
+  "version": "0.1.0",
   "asset": {
     "arduinoC": {
       "dir": "arduinoC/",
