@@ -15,10 +15,10 @@ namespace Sentry {
 
         if (mode == 'Wire') {
             Generator.addInclude("WireInclude", "#include <Wire.h>");   
-            Generator.addObject(`sentry${sentry}.Object`, "Sentry", `sentry${sentry}(0x6${sentry});`);
+            Generator.addObject(`sentry${sentry}.Object`, "Sentry2", `sentry${sentry}(0x6${sentry});`);
             Generator.addSetupMainTop("Wire.begin", `Wire.begin();`);      
         }else{
-            Generator.addObject(`sentry${sentry}.Object`, "Sentry", `sentry${sentry}();`);
+            Generator.addObject(`sentry${sentry}.Object`, "Sentry2", `sentry${sentry}();`);
         }
 
         Generator.addCode(`sentry${sentry}.begin(&${mode});`);
@@ -176,18 +176,16 @@ namespace Sentry {
         Generator.addCode(`sentry${sentry}.SensorSetDefault();`);
     }
 
-    //% block="[SENTRY] Set the [LED] algorithm to detect a color of [LED_COLOR1] and not to detect a color of [LED_COLOR2]" blockType="command"
+    //% block="[SENTRY] Set the LED algorithm to detect a color of [LED_COLOR1] and not to detect a color of [LED_COLOR2]" blockType="command"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% LED.shadow="dropdown" LED.options="LED" 
     //% LED_COLOR1.shadow="dropdown" LED_COLOR1.options="LED_COLOR"
     //% LED_COLOR2.shadow="dropdown" LED_COLOR2.options="LED_COLOR"     
     export function LedSetColor(parameter: any) {
         let sentry = parameter.SENTRY.code;
-        let led = parameter.LED.code;
         let color1 = parameter.LED_COLOR1.code;
         let color2 = parameter.LED_COLOR2.code;
 
-        Generator.addCode(`sentry${sentry}.LedSetColor(${led},${color1},${color2});`);
+        Generator.addCode(`sentry${sentry}.LedSetColor(${color1},${color2});`);
     }
 
     //% block="[SENTRY] Set camera [ZOOM]" blockType="command"

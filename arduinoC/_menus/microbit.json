@@ -35,50 +35,50 @@
         "menu": [
             [
                 "VisionColor",
-                "kVisionColor"
+                "Sentry2::kVisionColor"
             ],
             [
                 "VisionBlob",
-                "kVisionBlob"
+                "Sentry2::kVisionBlob"
             ],
             [
                 "VisionAprilTag",
-                "kVisionAprilTag"
+                "Sentry2::kVisionAprilTag"
             ],
             [
                 "VisionLine",
-                "kVisionLine"
+                "Sentry2::kVisionLine"
             ],
             [
                 "VisionBody",
-                "kVisionBody"
+                "Sentry2::kVisionBody"
             ],
             [
                 "VisionCard",
-                "kVisionCard"
+                "Sentry2::kVisionCard"
             ],
             [
                 "VisionFace",
-                "kVisionFace"
+                "Sentry2::kVisionFace"
             ],
             [
                 "Vision20Classes",
-                "kVision20Classes"
+                "Sentry2::kVision20Classes"
             ],
             [
                 "VisionQrCode",
-                "kVisionQrCode"
+                "Sentry2::kVisionQrCode"
             ],
             [
                 "VisionObjTrack",
-                "kVisionObjTrack"
+                "Sentry2::kVisionObjTrack"
             ],
             [
                 "VisionMotionDetect",
-                "kVisionMotionDetect"
+                "Sentry2::kVisionMotionDetect"
             ]
         ],
-        "default_GetValue_VISION_TYPE":"kVisionBlob"
+        "default_GetValue_VISION_TYPE":"Sentry2::kVisionBlob"
     },
     "VISION_STA": {
         "menu": [
@@ -248,22 +248,6 @@
             ]
         ]
     },
-    "LED": {
-        "menu": [
-            [
-                "Led1",
-                "kLed1"
-            ],
-            [
-                "Led2",
-                "kLed2"
-            ],
-            [
-                "LedAll",
-                "kLedAll"
-            ]
-        ]
-    },
     "LED_COLOR": {
         "menu": [
             [
@@ -304,27 +288,27 @@
         "menu": [
             [
                 "Black",
-                "SENTRY_COLOR_BLACK"
+                "color_label_e.kColorBlack"
             ],
             [
                 "White",
-                "SENTRY_COLOR_WHITE"
+                "color_label_e.kColorWhite"
             ],
             [
                 "Red",
-                "SENTRY_COLOR_RED"
+                "color_label_e.kColorRed"
             ],
             [
                 "Green",
-                "SENTRY_COLOR_GREEN"
+                "color_label_e.kColorGreen"
             ],
             [
                 "Blue",
-                "SENTRY_COLOR_BLUE"
+                "color_label_e.kColorBlue"
             ],
             [
                 "Yellow",
-                "SENTRY_COLOR_YELLOW"
+                "Sentry2::kColorYellow"
             ]
         ]
     },
@@ -332,83 +316,83 @@
         "menu": [
             [
                 "AIRPLANE",
-                "SENTRY_OBJ_AIRPLANE"
+                "Sentry2::kAirplane"
             ],
             [
                 "BICYCLE",
-                "SENTRY_OBJ_BICYCLE"
+                "Sentry2::kBicycle"
             ],
             [
                 "BIRD",
-                "SENTRY_OBJ_BIRD"
+                "Sentry2::kBird"
             ],
             [
                 "BOAT",
-                "SENTRY_OBJ_BOAT"
+                "Sentry2::kBoat"
             ],
             [
                 "BOTTLE",
-                "SENTRY_OBJ_BOTTLE"
+                "Sentry2::kBottle"
             ],
             [
                 "BUS",
-                "SENTRY_OBJ_BUS"
+                "Sentry2::kBus"
             ],
             [
                 "CAR",
-                "SENTRY_OBJ_CAR"
+                "Sentry2::kCar"
             ],
             [
                 "CAT",
-                "SENTRY_OBJ_CAT"
+                "Sentry2::kCat"
             ],
             [
                 "CHAIR",
-                "SENTRY_OBJ_CHAIR"
+                "Sentry2::kChair"
             ],
             [
                 "COW",
-                "SENTRY_OBJ_COW"
+                "Sentry2::kCow"
             ],
             [
                 "TABLE",
-                "SENTRY_OBJ_TABLE"
+                "Sentry2::kTable"
             ],
             [
                 "DOG",
-                "SENTRY_OBJ_DOG"
+                "Sentry2::kDog"
             ],
             [
                 "HORSE",
-                "SENTRY_OBJ_HORSE"
+                "Sentry2::kHorse"
             ],
             [
                 "BIKE",
-                "SENTRY_OBJ_MOTOR_BIKE"
+                "Sentry2::kMotorBike"
             ],
             [
                 "PERSON",
-                "SENTRY_OBJ_PERSON"
+                "Sentry2::kPerson"
             ],
             [
                 "PLANT",
-                "SENTRY_OBJ_PLANT"
+                "Sentry2::kPlant"
             ],
             [
                 "SHEEP",
-                "SENTRY_OBJ_SHEEP"
+                "Sentry2::kSheep"
             ],
             [
                 "SOFA",
-                "SENTRY_OBJ_SOFA"
+                "Sentry2::kSofa"
             ],
             [
                 "TRAIN",
-                "SENTRY_OBJ_TRAIN"
+                "Sentry2::kTrain"
             ],
             [
                 "MONITOR",
-                "SENTRY_OBJ_MONITOR"
+                "Sentry2::kMonitor"
             ]
         ]
     },
@@ -416,223 +400,223 @@
         "menu": [
             [
                 "FORWARD",
-                "SENTRY_CARD_FORWARD"
+                "Sentry2::kCardForward"
             ],
             [
                 "LEFT",
-                "SENTRY_CARD_LEFT"
+                "Sentry2::kCardLeft"
             ],
             [
                 "RIGHT",
-                "SENTRY_CARD_RIGHT"
+                "Sentry2::kCardRight"
             ],
             [
                 "TURN_AROUND",
-                "SENTRY_CARD_TURN_AROUND"
+                "Sentry2::kCardTurnAround"
             ],
             [
                 "PARK",
-                "SENTRY_CARD_PARK"
+                "Sentry2::kCardPark"
             ],
             [
                 "GREEN_LIGHT",
-                "SENTRY_CARD_GREEN_LIGHT"
+                "Sentry2::kCardGreenLight"
             ],
             [
                 "RED_LIGHT",
-                "SENTRY_CARD_RED_LIGHT"
+                "Sentry2::kCardRedLight"
             ],
             [
                 "SPEED_40",
-                "SENTRY_CARD_SPEED_40"
+                "Sentry2::kCardSpeed40"
             ],
             [
                 "SPEED_60",
-                "SENTRY_CARD_SPEED_60"
+                "Sentry2::kCardSpeed60"
             ],
             [
                 "SPEED_80",
-                "SENTRY_CARD_SPEED_80"
+                "Sentry2::kCardSpeed80"
             ],
             [
                 "CHECK",
-                "SENTRY_CARD_CHECK"
+                "Sentry2::kCardCheck"
             ],
             [
                 "CROSS",
-                "SENTRY_CARD_CROSS"
+                "Sentry2::kCardCross"
             ],
             [
                 "CIRCLE",
-                "SENTRY_CARD_CIRCLE"
+                "Sentry2::kCardCircle"
             ],
             [
                 "SQUARE",
-                "SENTRY_CARD_SQUARE"
+                "Sentry2::kCardSquare"
             ],
             [
                 "TRIANGLE",
-                "SENTRY_CARD_TRIANGLE"
+                "Sentry2::kCardTriangle"
             ],
             [
                 "PLUS",
-                "SENTRY_CARD_PLUS"
+                "Sentry2::kCardPlus"
             ],
             [
                 "MINUS",
-                "SENTRY_CARD_MINUS"
+                "Sentry2::kCardMinus"
             ],
             [
                 "DIVIDE",
-                "SENTRY_CARD_DIVIDE"
+                "Sentry2::kCardDivide"
             ],
             [
                 "EQUAL",
-                "SENTRY_CARD_EQUAL"
+                "Sentry2::kCardEqual"
             ],
             [
                 "0",
-                "SENTRY_CARD_ZERO"
+                "Sentry2::kCardZero"
             ],
             [
                 "1",
-                "SENTRY_CARD_ONE"
+                "Sentry2::kCardOne"
             ],
             [
                 "2",
-                "SENTRY_CARD_TWO"
+                "Sentry2::kCardTwo"
             ],
             [
                 "3",
-                "SENTRY_CARD_THREE"
+                "Sentry2::kCardThree"
             ],
             [
                 "4",
-                "SENTRY_CARD_FOUR"
+                "Sentry2::kCardFour"
             ],
             [
                 "5",
-                "SENTRY_CARD_FIVE"
+                "Sentry2::kCardFive"
             ],
             [
                 "6",
-                "SENTRY_CARD_SIX"
+                "Sentry2::kCardSix"
             ],
             [
                 "7",
-                "SENTRY_CARD_SEVEN"
+                "Sentry2::kCardSeven"
             ],
             [
                 "8",
-                "SENTRY_CARD_EIGHT"
+                "Sentry2::kCardEight"
             ],
             [
                 "9",
-                "SENTRY_CARD_NINE"
+                "Sentry2::kCardNine"
             ],
             [
                 "A",
-                "SENTRY_CARD_A"
+                "Sentry2::kCardA"
             ],
             [
                 "B",
-                "SENTRY_CARD_B"
+                "Sentry2::kCardB"
             ],
             [
                 "C",
-                "SENTRY_CARD_C"
+                "Sentry2::kCardC"
             ],
             [
                 "D",
-                "SENTRY_CARD_D"
+                "Sentry2::kCardD"
             ],
             [
                 "E",
-                "SENTRY_CARD_E"
+                "Sentry2::kCardE"
             ],
             [
                 "F",
-                "SENTRY_CARD_F"
+                "Sentry2::kCardF"
             ],
             [
                 "G",
-                "SENTRY_CARD_G"
+                "Sentry2::kCardG"
             ],
             [
                 "H",
-                "SENTRY_CARD_H"
+                "Sentry2::kCardH"
             ],
             [
                 "I",
-                "SENTRY_CARD_I"
+                "Sentry2::kCardI"
             ],
             [
                 "J",
-                "SENTRY_CARD_J"
+                "Sentry2::kCardJ"
             ],
             [
                 "K",
-                "SENTRY_CARD_K"
+                "Sentry2::kCardK"
             ],
             [
                 "L",
-                "SENTRY_CARD_L"
+                "Sentry2::kCardL"
             ],
             [
                 "N",
-                "SENTRY_CARD_M"
+                "Sentry2::kCardM"
             ],
             [
                 "N",
-                "SENTRY_CARD_N"
+                "Sentry2::kCardN"
             ],
             [
                 "O",
-                "SENTRY_CARD_O"
+                "Sentry2::kCardO"
             ],
             [
                 "V",
-                "SENTRY_CARD_P"
+                "Sentry2::kCardP"
             ],
             [
                 "W",
-                "SENTRY_CARD_Q"
+                "Sentry2::kCardQ"
             ],
             [
                 "R",
-                "SENTRY_CARD_R"
+                "Sentry2::kCardR"
             ],
             [
                 "S",
-                "SENTRY_CARD_S"
+                "Sentry2::kCardS"
             ],
             [
                 "T",
-                "SENTRY_CARD_T"
+                "Sentry2::kCardT"
             ],
             [
                 "U",
-                "SENTRY_CARD_U"
+                "Sentry2::kCardU"
             ],
             [
                 "V",
-                "SENTRY_CARD_V"
+                "Sentry2::kCardV"
             ],
             [
                 "W",
-                "SENTRY_CARD_W"
+                "Sentry2::kCardW"
             ],
             [
                 "X",
-                "SENTRY_CARD_X"
+                "Sentry2::kCardX"
             ],
             [
                 "Y",
-                "SENTRY_CARD_Y"
+                "Sentry2::kCardY"
             ],
             [
                 "Z",
-                "SENTRY_CARD_Z"
+                "Sentry2::kCardZ"
             ]
         ]
     }
