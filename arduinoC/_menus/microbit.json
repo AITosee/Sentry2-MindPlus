@@ -288,23 +288,23 @@
         "menu": [
             [
                 "Black",
-                "color_label_e.kColorBlack"
+                "Sentry2::kColorBlack"
             ],
             [
                 "White",
-                "color_label_e.kColorWhite"
+                "Sentry2::kColorWhite"
             ],
             [
                 "Red",
-                "color_label_e.kColorRed"
+                "Sentry2::kColorRed"
             ],
             [
                 "Green",
-                "color_label_e.kColorGreen"
+                "Sentry2::kColorGreen"
             ],
             [
                 "Blue",
-                "color_label_e.kColorBlue"
+                "Sentry2::kColorBlue"
             ],
             [
                 "Yellow",

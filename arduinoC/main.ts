@@ -69,7 +69,7 @@ namespace Sentry {
         let sentry = parameter.SENTRY.code;
         let num = parameter.NUM.code;
         let obj = parameter.OBJ_RGB_INFO.code;
-        Generator.addCode([`sentry${sentry}.GetValue(kVisionColor,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
+        Generator.addCode([`sentry${sentry}.GetValue(Sentry2::kVisionColor,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
     }
 
     //% block="[SENTRY] Color detected [NUM] [COLOR_LABLE]" blockType="boolean"
@@ -80,7 +80,7 @@ namespace Sentry {
         let sentry = parameter.SENTRY.code;
         let num = parameter.NUM.code;
         let obj = parameter.COdLOR_LABLE.code;
-        Generator.addCode([`sentry${sentry}.GetValue(kVisionColor,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
+        Generator.addCode([`sentry${sentry}.GetValue(Sentry2::kVisionColor,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
     }
 
     //% block="[SENTRY] get 20 Class detected [NUM] [Class20_LABLE]" blockType="boolean"
@@ -91,7 +91,7 @@ namespace Sentry {
         let sentry = parameter.SENTRY.code;
         let num = parameter.NUM.code;
         let obj = parameter.Class20_LABLE.code;
-        Generator.addCode([`sentry${sentry}.GetValue(kVision20Classes,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
+        Generator.addCode([`sentry${sentry}.GetValue(Sentry2::kVision20Classes,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
     }
 
     //% block="[SENTRY] Card detected [NUM] [CARD_LABLE]" blockType="boolean"
@@ -102,7 +102,7 @@ namespace Sentry {
         let sentry = parameter.SENTRY.code;
         let num = parameter.NUM.code;
         let obj = parameter.CARD_LABLE.code;
-        Generator.addCode([`sentry${sentry}.GetValue(kVisionCard,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
+        Generator.addCode([`sentry${sentry}.GetValue(Sentry2::kVisionCard,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
     }
 
     //% block="[SENTRY] Set [VISION_TYPE] Param [NUM]" blockType="command"
@@ -135,7 +135,7 @@ namespace Sentry {
         Generator.addCode(`param.y_value = ${y};`);
         Generator.addCode(`param.width = ${w};`);
         Generator.addCode(`param.height = ${h};`);
-        Generator.addCode(`sentry${sentry}.SetParam(kVisionFace,&param,${num});`);
+        Generator.addCode(`sentry${sentry}.SetParam(Sentry2::Sentry2::kVisionColor,&param,${num});`);
     }
     //% block="[SENTRY] Set color block detection parameter [NUM] minimum width [WIDTH] minimum height [HIGHT] to detect color [COLOR_LABLE]" blockType="command"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
@@ -154,7 +154,7 @@ namespace Sentry {
         Generator.addCode(`param.width = ${w};`);
         Generator.addCode(`param.height = ${h};`);
         Generator.addCode(`param.label = ${l};`);
-        Generator.addCode(`sentry${sentry}.SetParam(kVisionFace,&param,${num});`);
+        Generator.addCode(`sentry${sentry}.SetParam(Sentry2::kVisionBlob,&param,${num});`);
     }
     //% block="[SENTRY] Set face recognition [NUM] label [CARD_LABLE]" blockType="command"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
@@ -166,7 +166,7 @@ namespace Sentry {
         let l = parameter.CARD_LABLE.code;
         Generator.addObject("param_obj", "sentry_object_t", `param;`);
         Generator.addCode(`param.label = ${l};`);
-        Generator.addCode(`sentry${sentry}.SetParam(kVisionFace,&param,${num});`);
+        Generator.addCode(`sentry${sentry}.SetParam(Sentry2::kVisionFace,&param,${num});`);
     }
     //% block="[SENTRY] set default" blockType="command"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"

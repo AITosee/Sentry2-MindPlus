@@ -174,7 +174,7 @@ namespace Sentry {
         let color1 = parameter.LED_COLOR1.code;
         let color2 = parameter.LED_COLOR2.code;
 
-        Generator.addCode(`sentry${sentry}.LedSetColor(${color1},${color2})`);
+        Generator.addCode(`sentry${sentry}.LedSetColor(${color1},${color2}, 1)`);
     }
 
     //% block="[SENTRY] Set camera [ZOOM]" blockType="command"
