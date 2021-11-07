@@ -1,5 +1,7 @@
 {
-    "Sentry.Begin|block":"[SENTRY] 初始化端口 [MODE]",
+    "Sentry.Begin|block":"[SENTRY] 初始化端口直到成功 [MODE]",
+    "Sentry.MODE.uart1|menu": "串口1",
+    "Sentry.MODE.uart2|menu": "串口2",
     "Sentry.VisionSet|block":"[SENTRY]  [VISION_STA] 算法 [VISION_TYPE]",
     "Sentry.VISION_STA.OPEN|menu": "开启",
     "Sentry.VISION_STA.CLOSE|menu": "关闭",
@@ -66,7 +68,9 @@
     "Sentry.VisionGetStatus|block":"[SENTRY] 获取[VISION_TYPE]算法的状态",
     "Sentry.rows|block":"[SENTRY] 图像高度",
     "Sentry.cols|block":"[SENTRY] 图像宽度",
+    "Sentry.GetQrCodeValue|block":"[SENTRY] 二维码识别结果",
     "Sentry.GetColorLable|block":"[SENTRY] 颜色识别检测结果[NUM]为[COLOR_LABLE]",
+    "Sentry.GetColorBlob|block":"[SENTRY] 色块检测算法检测结果[NUM]为[COLOR_LABLE]",
     "Sentry.COLOR_LABLE.Black|menu": "黑色",
     "Sentry.COLOR_LABLE.White|menu": "白色",
     "Sentry.COLOR_LABLE.Red|menu": "红色",

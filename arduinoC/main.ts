@@ -18,10 +18,10 @@ namespace Sentry {
             Generator.addObject(`sentry${sentry}.Object`, "Sentry2", `sentry${sentry}(0x6${sentry});`);
             Generator.addSetupMainTop("Wire.begin", `Wire.begin();`);      
         }else{
-            Generator.addObject(`sentry${sentry}.Object`, "Sentry2", `sentry${sentry}();`);
+            Generator.addObject(`sentry${sentry}.Object`, "Sentry2", `sentry${sentry};`);
         }
 
-        Generator.addCode(`sentry${sentry}.begin(&${mode});`);
+        Generator.addCode(`while (SENTRY_OK != sentry${sentry}.begin(&${mode})) {yield();}`);
     }
 
     //% block="[SENTRY] [VISION_STA] vision [VISION_TYPE]" blockType="command"
@@ -38,71 +38,6 @@ namespace Sentry {
             Generator.addCode(`sentry${sentry}.VisionEnd(${vision_type});`);
         }
 
-    }
-    //% block="[SENTRY] get vision [VISION_TYPE] status" blockType="reporter"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% VISION_TYPE.shadow="dropdown" VISION_TYPE.options="VISION"    
-    export function GetVisionResult(parameter: any) {
-        let sentry = parameter.SENTRY.code;
-        let vision_type = parameter.VISION_TYPE.code;
-        Generator.addCode([`sentry${sentry}.GetValue(${vision_type}, kStatus)`, Generator.ORDER_UNARY_POSTFIX]);
-    }
-
-    //% block="[SENTRY] get [VISION_TYPE] [VISION_ID] [OBJ_INFO]" blockType="reporter"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% VISION_TYPE.shadow="dropdown" VISION_TYPE.options="VISION"
-    //% VISION_ID.shadow="number"
-    //% OBJ_INFO.shadow="dropdown" OBJ_INFO.options="OBJ_INFO"    
-    export function GetValue(parameter: any) {
-        let sentry = parameter.SENTRY.code;
-        let vision_type = parameter.VISION_TYPE.code;
-        let num = parameter.VISION_ID.code;
-        let obj = parameter.OBJ_INFO.code;
-        Generator.addCode([`sentry${sentry}.GetValue(${vision_type},${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
-    }
-
-    //% block="[SENTRY] get Color [NUM] [OBJ_RGB_INFO]" blockType="reporter"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% NUM.shadow="number"
-    //% OBJ_RGB_INFO.shadow="dropdown" OBJ_RGB_INFO.options="OBJ_RGB_INFO"    
-    export function GetColorValue(parameter: any) {
-        let sentry = parameter.SENTRY.code;
-        let num = parameter.NUM.code;
-        let obj = parameter.OBJ_RGB_INFO.code;
-        Generator.addCode([`sentry${sentry}.GetValue(Sentry2::kVisionColor,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
-    }
-
-    //% block="[SENTRY] Color detected [NUM] [COLOR_LABLE]" blockType="boolean"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% NUM.shadow="number"
-    //% COLOR_LABLE.shadow="dropdown" COLOR_LABLE.options="COLOR_LABLE"    
-    export function GetColorLable(parameter: any) {
-        let sentry = parameter.SENTRY.code;
-        let num = parameter.NUM.code;
-        let obj = parameter.COdLOR_LABLE.code;
-        Generator.addCode([`sentry${sentry}.GetValue(Sentry2::kVisionColor,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
-    }
-
-    //% block="[SENTRY] get 20 Class detected [NUM] [Class20_LABLE]" blockType="boolean"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% NUM.shadow="number"
-    //% Class20_LABLE.shadow="dropdown" Class20_LABLE.options="Class20_LABLE"    
-    export function GetClass20Lable(parameter: any) {
-        let sentry = parameter.SENTRY.code;
-        let num = parameter.NUM.code;
-        let obj = parameter.Class20_LABLE.code;
-        Generator.addCode([`sentry${sentry}.GetValue(Sentry2::kVision20Classes,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
-    }
-
-    //% block="[SENTRY] Card detected [NUM] [CARD_LABLE]" blockType="boolean"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% NUM.shadow="number"
-    //% CARD_LABLE.shadow="dropdown" CARD_LABLE.options="CARD_LABLE"    
-    export function GetCardLable(parameter: any) {
-        let sentry = parameter.SENTRY.code;
-        let num = parameter.NUM.code;
-        let obj = parameter.CARD_LABLE.code;
-        Generator.addCode([`sentry${sentry}.GetValue(Sentry2::kVisionCard,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
     }
 
     //% block="[SENTRY] Set [VISION_TYPE] Param [NUM]" blockType="command"
@@ -135,7 +70,7 @@ namespace Sentry {
         Generator.addCode(`param.y_value = ${y};`);
         Generator.addCode(`param.width = ${w};`);
         Generator.addCode(`param.height = ${h};`);
-        Generator.addCode(`sentry${sentry}.SetParam(Sentry2::Sentry2::kVisionColor,&param,${num});`);
+        Generator.addCode(`sentry${sentry}.SetParam(Sentry2::kVisionColor,&param,${num});`);
     }
     //% block="[SENTRY] Set color block detection parameter [NUM] minimum width [WIDTH] minimum height [HIGHT] to detect color [COLOR_LABLE]" blockType="command"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
@@ -238,6 +173,91 @@ namespace Sentry {
         let sentry = parameter.SENTRY.code;
         let vision_type = parameter.VISION_TYPE.code;
         Generator.addCode(`sentry${sentry}.VisionSetDefault(${vision_type});`);
+    }
+
+    //% block="[SENTRY] get vision [VISION_TYPE] status" blockType="reporter"
+    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
+    //% VISION_TYPE.shadow="dropdown" VISION_TYPE.options="VISION"    
+    export function GetVisionResult(parameter: any) {
+        let sentry = parameter.SENTRY.code;
+        let vision_type = parameter.VISION_TYPE.code;
+        Generator.addCode([`sentry${sentry}.GetValue(${vision_type}, kStatus)`, Generator.ORDER_UNARY_POSTFIX]);
+    }
+
+    //% block="[SENTRY] get [VISION_TYPE] [VISION_ID] [OBJ_INFO]" blockType="reporter"
+    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
+    //% VISION_TYPE.shadow="dropdown" VISION_TYPE.options="VISION"
+    //% VISION_ID.shadow="number"
+    //% OBJ_INFO.shadow="dropdown" OBJ_INFO.options="OBJ_INFO"    
+    export function GetValue(parameter: any) {
+        let sentry = parameter.SENTRY.code;
+        let vision_type = parameter.VISION_TYPE.code;
+        let num = parameter.VISION_ID.code;
+        let obj = parameter.OBJ_INFO.code;
+        Generator.addCode([`sentry${sentry}.GetValue(${vision_type},${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
+    }
+
+    //% block="[SENTRY] get Qr value" blockType="reporter"
+    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"  
+    export function GetQrCodeValue(parameter: any) {
+        let sentry = parameter.SENTRY.code;
+        Generator.addCode([`sentry${sentry}.GetQrCodeValue()`, Generator.ORDER_UNARY_POSTFIX]);
+    }
+
+
+    //% block="[SENTRY] get Color [NUM] [OBJ_RGB_INFO]" blockType="reporter"
+    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
+    //% NUM.shadow="number"
+    //% OBJ_RGB_INFO.shadow="dropdown" OBJ_RGB_INFO.options="OBJ_RGB_INFO"    
+    export function GetColorValue(parameter: any) {
+        let sentry = parameter.SENTRY.code;
+        let num = parameter.NUM.code;
+        let obj = parameter.OBJ_RGB_INFO.code;
+        Generator.addCode([`sentry${sentry}.GetValue(Sentry2::kVisionColor,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
+    }
+
+    //% block="[SENTRY] Color detected [NUM] [COLOR_LABLE]" blockType="boolean"
+    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
+    //% NUM.shadow="number"
+    //% COLOR_LABLE.shadow="dropdown" COLOR_LABLE.options="COLOR_LABLE"    
+    export function GetColorLable(parameter: any) {
+        let sentry = parameter.SENTRY.code;
+        let num = parameter.NUM.code;
+        let obj = parameter.COdLOR_LABLE.code;
+        Generator.addCode([`sentry${sentry}.GetValue(Sentry2::kVisionColor,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
+    }
+
+        //% block="[SENTRY] Blob detected [NUM] [COLOR_LABLE]" blockType="boolean"
+    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
+    //% NUM.shadow="number"
+    //% COLOR_LABLE.shadow="dropdown" COLOR_LABLE.options="COLOR_LABLE"    
+    export function GetColorBlob(parameter: any) {
+        let sentry = parameter.SENTRY.code;
+        let num = parameter.NUM.code;
+        let obj = parameter.COdLOR_LABLE.code;
+        Generator.addCode([`sentry${sentry}.GetValue(Sentry2::kVisionBlob,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
+    }
+
+    //% block="[SENTRY] get 20 Class detected [NUM] [Class20_LABLE]" blockType="boolean"
+    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
+    //% NUM.shadow="number"
+    //% Class20_LABLE.shadow="dropdown" Class20_LABLE.options="Class20_LABLE"    
+    export function GetClass20Lable(parameter: any) {
+        let sentry = parameter.SENTRY.code;
+        let num = parameter.NUM.code;
+        let obj = parameter.Class20_LABLE.code;
+        Generator.addCode([`sentry${sentry}.GetValue(Sentry2::kVision20Classes,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
+    }
+
+    //% block="[SENTRY] Card detected [NUM] [CARD_LABLE]" blockType="boolean"
+    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
+    //% NUM.shadow="number"
+    //% CARD_LABLE.shadow="dropdown" CARD_LABLE.options="CARD_LABLE"    
+    export function GetCardLable(parameter: any) {
+        let sentry = parameter.SENTRY.code;
+        let num = parameter.NUM.code;
+        let obj = parameter.CARD_LABLE.code;
+        Generator.addCode([`sentry${sentry}.GetValue(Sentry2::kVisionCard,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
     }
 
     //% block="[SENTRY] Get [VISION_TYPE] Status" blockType="boolean"

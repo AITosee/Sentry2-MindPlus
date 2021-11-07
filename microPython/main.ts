@@ -37,6 +37,130 @@ namespace Sentry {
         }
 
     }
+
+    //% block="[SENTRY] Set [VISION_TYPE] Param [NUM]" blockType="command"
+    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
+    //% VISION_TYPE.shadow="dropdown" VISION_TYPE.options="VISION"
+    //% NUM.shadow="range"   NUM.params.min=0    NUM.params.max=25    NUM.defl=1
+    export function SetParamNum(parameter: any) {
+        let sentry = parameter.SENTRY.code;
+        let vision_type = parameter.VISION_TYPE.code;
+        let num = parameter.NUM.code;
+        Generator.addCode(`sentry${sentry}.SetParamNum(${vision_type},${num})`);
+    }
+
+    //% block="[SENTRY] Set color parameter [NUM] ROI area center point abscissa [XVALUE] ordinate [YVALUE] width [WIDTH] height [HIGHT]"
+    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
+    //% NUM.shadow="range"   NUM.params.min=0    NUM.params.max=25    NUM.defl=0
+    //% XVALUE.shadow="number"   XVALUE.defl=160
+    //% YVALUE.shadow="number"   YVALUE.defl=120
+    //% WIDTH.shadow="number"   WIDTH.defl=8
+    //% HIGHT.shadow="number"   HIGHT.defl=8
+    export function SetColorParam(parameter: any) {
+        let sentry = parameter.SENTRY.code;
+        let num = parameter.NUM.code;
+        let x = parameter.XVALUE.code;
+        let y = parameter.YVALUE.code;
+        let w = parameter.WIDTH.code;
+        let h = parameter.HIGHT.code;
+
+        Generator.addCode(`sentry${sentry}.SetParam(sentry_vision_e.kVisionColor,[${x}, ${y}, ${w}, ${h}, 0],${num})`);
+    }
+
+    //% block="[SENTRY] Set color block detection parameter [NUM] minimum width [WIDTH] minimum height [HIGHT] to detect color [COLOR_LABLE]" blockType="command"
+    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
+    //% NUM.shadow="range"   NUM.params.min=0    NUM.params.max=25    NUM.defl=0
+    //% WIDTH.shadow="number"   WIDTH.defl=8
+    //% HIGHT.shadow="number"   HIGHT.defl=8
+    //% COLOR_LABLE.shadow="dropdown" COLOR_LABLE.options="COLOR_LABLE"
+    export function SetBlobParam(parameter: any) {
+        let sentry = parameter.SENTRY.code;
+        let num = parameter.NUM.code;
+        let w = parameter.WIDTH.code;
+        let h = parameter.HIGHT.code;
+        let l = parameter.COLOR_LABLE.code;
+
+        Generator.addCode(`sentry${sentry}.SetParam(sentry_vision_e.kVisionBlob,[0, 0, ${w}, ${h}, ${l}],${num})`);
+    }
+
+    //% block="[SENTRY] Set face recognition [NUM] label [CARD_LABLE]" blockType="command"
+    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
+    //% NUM.shadow="range"   NUM.params.min=0    NUM.params.max=25    NUM.defl=0
+    //% CARD_LABLE.shadow="number"   CARD_LABLE.defl=0    
+    export function SetFaceParam(parameter: any) {
+        let sentry = parameter.SENTRY.code;
+        let num = parameter.NUM.code;
+        let l = parameter.CARD_LABLE.code;
+
+
+        Generator.addCode(`sentry${sentry}.SetParam(sentry_vision_e.kVisionFace,[0, 0, 0, 0, ${l}],${num})`);
+    }
+
+    //% block="[SENTRY] set default" blockType="command"
+    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
+    export function SensorSetDefault(parameter: any) {
+        let sentry = parameter.SENTRY.code;
+
+        Generator.addCode(`sentry${sentry}.SensorSetDefault()`);
+    }
+
+    //% block="[SENTRY] Set the LED algorithm to detect a color of [LED_COLOR1] and not to detect a color of [LED_COLOR2]" blockType="command"
+    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
+    //% LED_COLOR1.shadow="dropdown" LED_COLOR1.options="LED_COLOR"
+    //% LED_COLOR2.shadow="dropdown" LED_COLOR2.options="LED_COLOR"     
+    export function LedSetColor(parameter: any) {
+        let sentry = parameter.SENTRY.code;
+        let color1 = parameter.LED_COLOR1.code;
+        let color2 = parameter.LED_COLOR2.code;
+
+        Generator.addCode(`sentry${sentry}.LedSetColor(${color1},${color2}, 1)`);
+    }
+
+    //% block="[SENTRY] Set camera [ZOOM]" blockType="command"
+    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
+    //% ZOOM.shadow="dropdown" ZOOM.options="ZOOM" 
+    export function CameraSetZoom(parameter: any) {
+        let sentry = parameter.SENTRY.code;
+        let zoom = parameter.ZOOM.code;
+        Generator.addCode(`sentry${sentry}.CameraSetZoom(${zoom})`);
+    }
+
+    //% block="[SENTRY] Set camera [ROTATE]" blockType="command"
+    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
+    //% ROTATE.shadow="dropdown" ROTATE.options="ROTATE" 
+    export function CameraSetRotate(parameter: any) {
+        let sentry = parameter.SENTRY.code;
+        let rotate = parameter.ROTATE.code;
+        Generator.addCode(`sentry${sentry}.CameraSetRotate(${rotate})`);
+    }
+
+    //% block="[SENTRY] Set camera [FPS]" blockType="command"
+    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
+    //% FPS.shadow="dropdown" FPS.options="FPS" 
+    export function CameraSetFPS(parameter: any) {
+        let sentry = parameter.SENTRY.code;
+        let fps = parameter.FPS.code;
+        Generator.addCode(`sentry${sentry}.CameraSetFPS(${fps})`);
+    }
+
+    //% block="[SENTRY] Set camera [AWB]" blockType="command"
+    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
+    //% AWB.shadow="dropdown" AWB.options="AWB" 
+    export function CameraSetAwb(parameter: any) {
+        let sentry = parameter.SENTRY.code;
+        let awb = parameter.AWB.code;
+        Generator.addCode(`sentry${sentry}.CameraSetAwb(${awb})`);
+    }
+
+    //% block="[SENTRY] set [VISION_TYPE] default" blockType="command"
+    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
+    //% VISION_TYPE.shadow="dropdown" VISION_TYPE.options="VISION"   
+    export function VisionSetDefault(parameter: any) {
+        let sentry = parameter.SENTRY.code;
+        let vision_type = parameter.VISION_TYPE.code;
+        Generator.addCode(`sentry${sentry}.VisionSetDefault(${vision_type})`);
+    }
+
     //% block="[SENTRY] get vision [VISION_TYPE] status" blockType="reporter"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
     //% VISION_TYPE.shadow="dropdown" VISION_TYPE.options="VISION"    
@@ -59,6 +183,13 @@ namespace Sentry {
         Generator.addCode([`sentry${sentry}.GetValue(${vision_type},${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
     }
 
+    //% block="[SENTRY] get Qr value" blockType="reporter"
+    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"  
+    export function GetQrCodeValue(parameter: any) {
+        let sentry = parameter.SENTRY.code;
+        Generator.addCode([`sentry${sentry}.GetQrCodeValue()`, Generator.ORDER_UNARY_POSTFIX]);
+    }
+
     //% block="[SENTRY] get Color [NUM] [OBJ_RGB_INFO]" blockType="reporter"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
     //% NUM.shadow="number"
@@ -68,6 +199,17 @@ namespace Sentry {
         let num = parameter.NUM.code;
         let obj = parameter.OBJ_RGB_INFO.code;
         Generator.addCode([`sentry${sentry}.GetValue(sentry_vision_e.kVisionColor,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
+    }
+
+    //% block="[SENTRY] Blob detected [NUM] [COLOR_LABLE]" blockType="boolean"
+    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
+    //% NUM.shadow="number"
+    //% COLOR_LABLE.shadow="dropdown" COLOR_LABLE.options="COLOR_LABLE"    
+    export function GetColorBlob(parameter: any) {
+        let sentry = parameter.SENTRY.code;
+        let num = parameter.NUM.code;
+        let obj = parameter.COdLOR_LABLE.code;
+        Generator.addCode([`sentry${sentry}.GetValue(sentry_vision_e.kVisionBlob,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
     }
 
     //% block="[SENTRY] Color detected [NUM] [COLOR_LABLE]" blockType="boolean"
@@ -101,123 +243,6 @@ namespace Sentry {
         let num = parameter.NUM.code;
         let obj = parameter.CARD_LABLE.code;
         Generator.addCode([`sentry${sentry}.GetValue(sentry_vision_e.kVisionCard,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
-    }
-
-    //% block="[SENTRY] Set [VISION_TYPE] Param [NUM]" blockType="command"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% VISION_TYPE.shadow="dropdown" VISION_TYPE.options="VISION"
-    //% NUM.shadow="range"   NUM.params.min=0    NUM.params.max=25    NUM.defl=1
-    export function SetParamNum(parameter: any) {
-        let sentry = parameter.SENTRY.code;
-        let vision_type = parameter.VISION_TYPE.code;
-        let num = parameter.NUM.code;
-        Generator.addCode(`sentry${sentry}.SetParamNum(${vision_type},${num})`);
-    }
-    //% block="[SENTRY] Set color parameter [NUM] ROI area center point abscissa [XVALUE] ordinate [YVALUE] width [WIDTH] height [HIGHT]"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% NUM.shadow="range"   NUM.params.min=0    NUM.params.max=25    NUM.defl=0
-    //% XVALUE.shadow="number"   XVALUE.defl=160
-    //% YVALUE.shadow="number"   YVALUE.defl=120
-    //% WIDTH.shadow="number"   WIDTH.defl=8
-    //% HIGHT.shadow="number"   HIGHT.defl=8
-    export function SetColorParam(parameter: any) {
-        let sentry = parameter.SENTRY.code;
-        let num = parameter.NUM.code;
-        let x = parameter.XVALUE.code;
-        let y = parameter.YVALUE.code;
-        let w = parameter.WIDTH.code;
-        let h = parameter.HIGHT.code;
-
-        Generator.addCode(`sentry${sentry}.SetParam(sentry_vision_e.kVisionColor,[${x}, ${y}, ${w}, ${h}, 0],${num})`);
-    }
-    //% block="[SENTRY] Set color block detection parameter [NUM] minimum width [WIDTH] minimum height [HIGHT] to detect color [COLOR_LABLE]" blockType="command"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% NUM.shadow="range"   NUM.params.min=0    NUM.params.max=25    NUM.defl=0
-    //% WIDTH.shadow="number"   WIDTH.defl=8
-    //% HIGHT.shadow="number"   HIGHT.defl=8
-    //% COLOR_LABLE.shadow="dropdown" COLOR_LABLE.options="COLOR_LABLE"
-    export function SetBlobParam(parameter: any) {
-        let sentry = parameter.SENTRY.code;
-        let num = parameter.NUM.code;
-        let w = parameter.WIDTH.code;
-        let h = parameter.HIGHT.code;
-        let l = parameter.COLOR_LABLE.code;
-
-        Generator.addCode(`sentry${sentry}.SetParam(sentry_vision_e.kVisionBlob,[0, 0, ${w}, ${h}, ${l}],${num})`);
-    }
-    //% block="[SENTRY] Set face recognition [NUM] label [CARD_LABLE]" blockType="command"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% NUM.shadow="range"   NUM.params.min=0    NUM.params.max=25    NUM.defl=0
-    //% CARD_LABLE.shadow="number"   CARD_LABLE.defl=0    
-    export function SetFaceParam(parameter: any) {
-        let sentry = parameter.SENTRY.code;
-        let num = parameter.NUM.code;
-        let l = parameter.CARD_LABLE.code;
-
-
-        Generator.addCode(`sentry${sentry}.SetParam(sentry_vision_e.kVisionFace,[0, 0, 0, 0, ${l}],${num})`);
-    }
-    //% block="[SENTRY] set default" blockType="command"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    export function SensorSetDefault(parameter: any) {
-        let sentry = parameter.SENTRY.code;
-
-        Generator.addCode(`sentry${sentry}.SensorSetDefault()`);
-    }
-
-    //% block="[SENTRY] Set the LED algorithm to detect a color of [LED_COLOR1] and not to detect a color of [LED_COLOR2]" blockType="command"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% LED_COLOR1.shadow="dropdown" LED_COLOR1.options="LED_COLOR"
-    //% LED_COLOR2.shadow="dropdown" LED_COLOR2.options="LED_COLOR"     
-    export function LedSetColor(parameter: any) {
-        let sentry = parameter.SENTRY.code;
-        let color1 = parameter.LED_COLOR1.code;
-        let color2 = parameter.LED_COLOR2.code;
-
-        Generator.addCode(`sentry${sentry}.LedSetColor(${color1},${color2}, 1)`);
-    }
-
-    //% block="[SENTRY] Set camera [ZOOM]" blockType="command"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% ZOOM.shadow="dropdown" ZOOM.options="ZOOM" 
-    export function CameraSetZoom(parameter: any) {
-        let sentry = parameter.SENTRY.code;
-        let zoom = parameter.ZOOM.code;
-        Generator.addCode(`sentry${sentry}.CameraSetZoom(${zoom})`);
-    }
-    //% block="[SENTRY] Set camera [ROTATE]" blockType="command"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% ROTATE.shadow="dropdown" ROTATE.options="ROTATE" 
-    export function CameraSetRotate(parameter: any) {
-        let sentry = parameter.SENTRY.code;
-        let rotate = parameter.ROTATE.code;
-        Generator.addCode(`sentry${sentry}.CameraSetRotate(${rotate})`);
-    }
-
-    //% block="[SENTRY] Set camera [FPS]" blockType="command"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% FPS.shadow="dropdown" FPS.options="FPS" 
-    export function CameraSetFPS(parameter: any) {
-        let sentry = parameter.SENTRY.code;
-        let fps = parameter.FPS.code;
-        Generator.addCode(`sentry${sentry}.CameraSetFPS(${fps})`);
-    }
-    //% block="[SENTRY] Set camera [AWB]" blockType="command"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% AWB.shadow="dropdown" AWB.options="AWB" 
-    export function CameraSetAwb(parameter: any) {
-        let sentry = parameter.SENTRY.code;
-        let awb = parameter.AWB.code;
-        Generator.addCode(`sentry${sentry}.CameraSetAwb(${awb})`);
-    }
-
-    //% block="[SENTRY] set [VISION_TYPE] default" blockType="command"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% VISION_TYPE.shadow="dropdown" VISION_TYPE.options="VISION"   
-    export function VisionSetDefault(parameter: any) {
-        let sentry = parameter.SENTRY.code;
-        let vision_type = parameter.VISION_TYPE.code;
-        Generator.addCode(`sentry${sentry}.VisionSetDefault(${vision_type})`);
     }
 
     //% block="[SENTRY] Get [VISION_TYPE] Status" blockType="boolean"
