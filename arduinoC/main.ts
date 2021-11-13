@@ -223,7 +223,7 @@ namespace Sentry {
     export function GetColorLable(parameter: any) {
         let sentry = parameter.SENTRY.code;
         let num = parameter.NUM.code;
-        let obj = parameter.COdLOR_LABLE.code;
+        let obj = parameter.COLOR_LABLE.code;
         Generator.addCode([`sentry${sentry}.GetValue(Sentry2::kVisionColor,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
     }
 
@@ -234,7 +234,7 @@ namespace Sentry {
     export function GetColorBlob(parameter: any) {
         let sentry = parameter.SENTRY.code;
         let num = parameter.NUM.code;
-        let obj = parameter.COdLOR_LABLE.code;
+        let obj = parameter.COLOR_LABLE.code;
         Generator.addCode([`sentry${sentry}.GetValue(Sentry2::kVisionBlob,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
     }
 
