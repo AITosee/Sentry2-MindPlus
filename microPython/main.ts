@@ -209,7 +209,7 @@ namespace Sentry {
         let sentry = parameter.SENTRY.code;
         let num = parameter.NUM.code;
         let obj = parameter.COdLOR_LABLE.code;
-        Generator.addCode([`sentry${sentry}.GetValue(sentry_vision_e.kVisionBlob,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
+        Generator.addCode([`sentry${sentry}.GetValue(sentry_vision_e.kVisionBlob,kLable,${num})`, Generator.ORDER_UNARY_POSTFIX]);
     }
 
     //% block="[SENTRY] Color detected [NUM] [COLOR_LABLE]" blockType="boolean"
@@ -220,7 +220,7 @@ namespace Sentry {
         let sentry = parameter.SENTRY.code;
         let num = parameter.NUM.code;
         let obj = parameter.COdLOR_LABLE.code;
-        Generator.addCode([`sentry${sentry}.GetValue(sentry_vision_e.kVisionColor,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
+        Generator.addCode([`sentry${sentry}.GetValue(sentry_vision_e.kVisionColor,kLable,${num})`, Generator.ORDER_UNARY_POSTFIX]);
     }
 
     //% block="[SENTRY] get 20 Class detected [NUM] [Class20_LABLE]" blockType="boolean"
@@ -231,7 +231,7 @@ namespace Sentry {
         let sentry = parameter.SENTRY.code;
         let num = parameter.NUM.code;
         let obj = parameter.Class20_LABLE.code;
-        Generator.addCode([`sentry${sentry}.GetValue(sentry_vision_e.kVision20Classes,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
+        Generator.addCode([`sentry${sentry}.GetValue(sentry_vision_e.kVision20Classes,kLable,${num})`, Generator.ORDER_UNARY_POSTFIX]);
     }
 
     //% block="[SENTRY] Card detected [NUM] [CARD_LABLE]" blockType="boolean"
@@ -242,7 +242,7 @@ namespace Sentry {
         let sentry = parameter.SENTRY.code;
         let num = parameter.NUM.code;
         let obj = parameter.CARD_LABLE.code;
-        Generator.addCode([`sentry${sentry}.GetValue(sentry_vision_e.kVisionCard,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
+        Generator.addCode([`sentry${sentry}.GetValue(sentry_vision_e.kVisionCard,kLable,${num})`, Generator.ORDER_UNARY_POSTFIX]);
     }
 
     //% block="[SENTRY] Get [VISION_TYPE] Status" blockType="boolean"
