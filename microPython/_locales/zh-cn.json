@@ -10,7 +10,7 @@
     "Sentry.VISION.VisionBlob|menu": "色块检测",
     "Sentry.VISION.VisionAprilTag|menu": "Apriltag",
     "Sentry.VISION.VisionLine|menu": "线段检测",
-    "Sentry.VISION.VisionBody|menu": "人体检测",
+    "Sentry.VISION.VisionLearning|menu": "机器学习",
     "Sentry.VISION.VisionCard|menu": "卡片识别",
     "Sentry.VISION.VisionFace|menu": "人脸识别",
     "Sentry.VISION.Vision20Classes|menu": "20分类识别",

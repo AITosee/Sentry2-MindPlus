@@ -74,8 +74,8 @@
                 "Sentry2::kVisionLine"
             ],
             [
-                "VisionBody",
-                "Sentry2::kVisionBody"
+                "VisionLearning",
+                "Sentry2::kVisionLearning"
             ],
             [
                 "VisionCard",

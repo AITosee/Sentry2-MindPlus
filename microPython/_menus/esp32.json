@@ -54,8 +54,8 @@
                 "sentry_vision_e.kVisionLine"
             ],
             [
-                "VisionBody",
-                "sentry_vision_e.kVisionBody"
+                "VisionLearning",
+                "sentry_vision_e.kVisionLearning"
             ],
             [
                 "VisionCard",
