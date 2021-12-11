@@ -18,7 +18,7 @@ namespace Sentry {
             Generator.addObject(`sentry${sentry}.Object`, "Sentry2", `sentry${sentry}(0x6${sentry});`);
             Generator.addSetupMainTop("Wire.begin", `Wire.begin();`);      
         }else{
-            Generator.addObject(`sentry${sentry}.Object`, "Sentry2", `sentry${sentry};`);
+            Generator.addObject(`sentry${sentry}.Object`, "Sentry2", `sentry${sentry}(0x6${sentry});`);
         }
 
         Generator.addCode(`while (SENTRY_OK != sentry${sentry}.begin(&${mode})) {yield();}`);

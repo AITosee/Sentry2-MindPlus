@@ -1,7 +1,8 @@
 {
-    "Sentry.Begin|block":"[SENTRY] 初始化端口直到成功 [MODE]",
+    "Sentry.Begin|block":"[SENTRY] 初始化端口 [MODE]直到成功",
     "Sentry.MODE.Serial1|menu": "串口1",
     "Sentry.MODE.Serial2|menu": "串口2",
+    "Sentry.MODE.Serial3|menu": "串口3",
     "Sentry.VisionSet|block":"[SENTRY]  [VISION_STA] 算法 [VISION_TYPE]",
     "Sentry.VISION_STA.OPEN|menu": "开启",
     "Sentry.VISION_STA.CLOSE|menu": "关闭",
