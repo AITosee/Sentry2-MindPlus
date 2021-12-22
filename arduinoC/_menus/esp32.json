@@ -35,6 +35,18 @@
             ]         
         ]
     },
+    "COORDINATE": {
+        "menu": [
+            [
+                "AbsoluteCoordinate",
+                "kAbsoluteCoordinate"
+            ],
+            [
+                "PercentageCoordinate",
+                "kPercentageCoordinate"
+            ]
+        ]
+    },
     "VISION": {
         "menu": [
             [

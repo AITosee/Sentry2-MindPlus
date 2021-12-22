@@ -55,6 +55,18 @@
             ]        
         ]
     },
+    "COORDINATE": {
+        "menu": [
+            [
+                "AbsoluteCoordinate",
+                "0"
+            ],
+            [
+                "PercentageCoordinate",
+                "1"
+            ]
+        ]
+    },
     "VISION": {
         "menu": [
             [

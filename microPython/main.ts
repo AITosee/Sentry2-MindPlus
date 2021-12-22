@@ -104,6 +104,16 @@ namespace Sentry {
         Generator.addCode(`sentry${sentry}.SensorSetDefault()`);
     }
 
+    //% block="[SENTRY] set coordinate type [COORDINATE]" blockType="command"
+    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
+    //% COORDINATE.shadow="dropdown" COORDINATE.options="COORDINATE"
+    export function SeneorSetCoordinateType(parameter: any) {
+        let sentry = parameter.SENTRY.code;
+        let coordinate = parameter.COORDINATE.code;
+
+        Generator.addCode(`sentry${sentry}.SeneorSetCoordinateType(${coordinate})`);
+    }
+
     //% block="[SENTRY] Set the LED algorithm to detect a color of [LED_COLOR1] and not to detect a color of [LED_COLOR2]" blockType="command"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
     //% LED_COLOR1.shadow="dropdown" LED_COLOR1.options="LED_COLOR"
