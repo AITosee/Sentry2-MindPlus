@@ -276,7 +276,7 @@ namespace Sentry {
     export function VisionGetStatus(parameter: any) {
         let sentry = parameter.SENTRY.code;
         let vision_type = parameter.VISION_TYPE.code;
-        Generator.addCode(`sentry${sentry}.VisionGetStatus(${vision_type});`);
+        Generator.addCode(`sentry${sentry}.VisionGetStatus(${vision_type})`, Generator.ORDER_UNARY_POSTFIX]);
     }
     //% block="[SENTRY] image height" blockType="reporter"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
