@@ -91,18 +91,18 @@ namespace Sentry {
         Generator.addCode(`param.label = ${l};`);
         Generator.addCode(`sentry${sentry}.SetParam(Sentry2::kVisionBlob,&param,(int)${num});`);
     }
-    //% block="[SENTRY] Set face recognition [NUM] label [CARD_LABLE]" blockType="command"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% NUM.shadow="range"   NUM.params.min=0    NUM.params.max=25    NUM.defl=0
-    //% CARD_LABLE.shadow="number"   CARD_LABLE.defl=0    
-    export function SetFaceParam(parameter: any) {
-        let sentry = parameter.SENTRY.code;
-        let num = parameter.NUM.code;
-        let l = parameter.CARD_LABLE.code;
-        Generator.addObject("param_obj", "sentry_object_t", `param;`);
-        Generator.addCode(`param.label = ${l};`);
-        Generator.addCode(`sentry${sentry}.SetParam(Sentry2::kVisionFace,&param,(int)${num});`);
-    }
+    // //% block="[SENTRY] Set face recognition [NUM] label [CARD_LABLE]" blockType="command"
+    // //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
+    // //% NUM.shadow="range"   NUM.params.min=0    NUM.params.max=25    NUM.defl=0
+    // //% CARD_LABLE.shadow="number"   CARD_LABLE.defl=0    
+    // export function SetFaceParam(parameter: any) {
+    //     let sentry = parameter.SENTRY.code;
+    //     let num = parameter.NUM.code;
+    //     let l = parameter.CARD_LABLE.code;
+    //     Generator.addObject("param_obj", "sentry_object_t", `param;`);
+    //     Generator.addCode(`param.label = ${l};`);
+    //     Generator.addCode(`sentry${sentry}.SetParam(Sentry2::kVisionFace,&param,(int)${num});`);
+    // }
     //% block="[SENTRY] set default" blockType="command"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
     export function SensorSetDefault(parameter: any) {
@@ -141,23 +141,23 @@ namespace Sentry {
         let zoom = parameter.ZOOM.code;
         Generator.addCode(`sentry${sentry}.CameraSetZoom(${zoom});`);
     }
-    //% block="[SENTRY] Set camera [ROTATE]" blockType="command"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% ROTATE.shadow="dropdown" ROTATE.options="ROTATE" 
-    export function CameraSetRotate(parameter: any) {
-        let sentry = parameter.SENTRY.code;
-        let rotate = parameter.ROTATE.code;
-        Generator.addCode(`sentry${sentry}.CameraSetRotate(${rotate});`);
-    }
+    // //% block="[SENTRY] Set camera [ROTATE]" blockType="command"
+    // //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
+    // //% ROTATE.shadow="dropdown" ROTATE.options="ROTATE" 
+    // export function CameraSetRotate(parameter: any) {
+    //     let sentry = parameter.SENTRY.code;
+    //     let rotate = parameter.ROTATE.code;
+    //     Generator.addCode(`sentry${sentry}.CameraSetRotate(${rotate});`);
+    // }
 
-    //% block="[SENTRY] Set camera [FPS]" blockType="command"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% FPS.shadow="dropdown" FPS.options="FPS" 
-    export function CameraSetFPS(parameter: any) {
-        let sentry = parameter.SENTRY.code;
-        let fps = parameter.FPS.code;
-        Generator.addCode(`sentry${sentry}.CameraSetFPS(${fps});`);
-    }
+    // //% block="[SENTRY] Set camera [FPS]" blockType="command"
+    // //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
+    // //% FPS.shadow="dropdown" FPS.options="FPS" 
+    // export function CameraSetFPS(parameter: any) {
+    //     let sentry = parameter.SENTRY.code;
+    //     let fps = parameter.FPS.code;
+    //     Generator.addCode(`sentry${sentry}.CameraSetFPS(${fps});`);
+    // }
     //% block="[SENTRY] Set camera [AWB]" blockType="command"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
     //% AWB.shadow="dropdown" AWB.options="AWB" 

@@ -16,7 +16,7 @@
     "Sentry.VISION.VisionFace|menu": "人脸识别",
     "Sentry.VISION.Vision20Classes|menu": "20分类识别",
     "Sentry.VISION.VisionQrCode|menu": "二维码识别",
-    "Sentry.VISION.VisionObjTrack|menu": "物体训练与追踪",
+    "Sentry.VISION.VisionObjTrack|menu": "深度学习",
     "Sentry.VISION.VisionMotionDetect|menu": "运动物体检测",
     "Sentry.GetValue|block":"[SENTRY] [VISION_TYPE]算法第[VISION_ID]个结果的[OBJ_INFO]",
     "Sentry.GetColorValue|block":"[SENTRY] 获取 颜色识别 算法第[NUM]个结果的[OBJ_RGB_INFO]",
