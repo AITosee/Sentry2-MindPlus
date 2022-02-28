@@ -7,30 +7,37 @@
     "zh-cn": "Sentry 库文件。",
     "en": "Sentry libraries."
   },
-  "author": "Uniquemf",
-  "email": "weiyanfengv@gmail.com",
+  "author": "AITosee",
+  "email": "support@aitosee.com",
   "license": "MIT",
   "isTest": true,
   "isBoard": false,
   "id": "Sentry",
-  "platform": ["win", "web"],
+  "platform": [
+    "win",
+    "web"
+  ],
   "version": "0.2.0",
   "asset": {
     "arduinoC": {
       "dir": "arduinoC/",
       "version": "1.1.5",
       "board": [
-        "arduino","arduinonano","mega2560","microbit", "esp32"
+        "arduino",
+        "arduinonano",
+        "mega2560",
+        "microbit",
+        "esp32"
       ],
       "main": "main.ts"
     },
-    "microPython":{
+    "microPython": {
       "dir": "microPython/",
       "version": "0.1.0",
       "board": [
-         "esp32"
+        "esp32"
       ],
-      "main": "main.ts"     
+      "main": "main.ts"
     }
   }
 }

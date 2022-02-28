@@ -3,4 +3,4 @@
 	url = git@github.com:AITosee/Sentry-Arduino.git
 [submodule "microPython/libraries/Sentry-microPython"]
 	path = microPython/libraries/Sentry-microPython
-	url = git@github.com:Uniquemf/Sentry-microPython.git
+	url = git@github.com:AITosee/Sentry-microPython.git
