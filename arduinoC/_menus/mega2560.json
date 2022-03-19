@@ -2,20 +2,20 @@
     "SENTRY": {
         "menu": [
             [
-                "Sentry1",
-                "0"
+                "0x60",
+                "0x60"
             ],
             [
-                "Sentry2",
-                "1"
+                "0x61",
+                "0x61"
             ],
             [
-                "Sentry3",
-                "2"
+                "0x62",
+                "0x62"
             ],
             [
-                "Sentry4",
-                "3"
+                "0x63",
+                "0x63"
             ]
         ]
     },
@@ -52,7 +52,7 @@
             [
                 "softwareSerial4",
                 "softwareSerial4"
-            ]        
+            ]
         ]
     },
     "COORDINATE": {
@@ -106,15 +106,11 @@
                 "Sentry2::kVisionQrCode"
             ],
             [
-                "VisionObjTrack",
-                "Sentry2::kVisionObjTrack"
-            ],
-            [
                 "VisionMotionDetect",
                 "Sentry2::kVisionMotionDetect"
             ]
         ],
-        "default_GetValue_VISION_TYPE":"Sentry2::kVisionBlob"
+        "default_GetValue_VISION_TYPE": "Sentry2::kVisionBlob"
     },
     "VISION_STA": {
         "menu": [
@@ -656,4 +652,4 @@
             ]
         ]
     }
-} 
+}
