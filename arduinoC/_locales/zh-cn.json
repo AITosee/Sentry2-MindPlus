@@ -1,5 +1,5 @@
 {
-    "Sentry.Begin|block":"Sentry初始化端口 [MODE]直到成功",
+    "Sentry.Begin|block":"Sentry初始化端口直到成功 [MODE] 地址[ADDR]",
     "Sentry.MODE.Serial1|menu": "串口1",
     "Sentry.MODE.Serial2|menu": "串口2",
     "Sentry.MODE.Serial3|menu": "串口3",

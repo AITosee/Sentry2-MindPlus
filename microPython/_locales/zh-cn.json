@@ -1,5 +1,5 @@
 {
-    "Sentry.Begin|block":"Sentry初始化端口直到成功 [MODE]",
+    "Sentry.Begin|block":"Sentry初始化端口直到成功 [MODE] 地址[ADDR]",
     "Sentry.MODE.uart1|menu": "串口1",
     "Sentry.MODE.uart2|menu": "串口2",
     "Sentry.VisionSet|block":"Sentry [VISION_STA] 算法 [VISION_TYPE]",
