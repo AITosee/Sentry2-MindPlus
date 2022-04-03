@@ -74,10 +74,6 @@
                 "sentry_vision_e.kVisionQrCode"
             ],
             [
-                "VisionObjTrack",
-                "sentry_vision_e.kVisionObjTrack"
-            ],
-            [
                 "VisionMotionDetect",
                 "sentry_vision_e.kVisionMotionDetect"
             ]
