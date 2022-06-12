@@ -89,99 +89,6 @@ namespace Sentry {
         Generator.addCode(`param.label = ${l};`);
         Generator.addCode(`sentry.SetParam(Sentry2::kVisionBlob,&param,(int)${num});`);
     }
-    // //% block="Sentry set face recognition [NUM] label [CARD_LABLE]" blockType="command"
-    // //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    // //% NUM.shadow="range"   NUM.params.min=0    NUM.params.max=25    NUM.defl=0
-    // //% CARD_LABLE.shadow="number"   CARD_LABLE.defl=0    
-    // export function SetFaceParam(parameter: any) {
-    //     
-    //     let num = parameter.NUM.code;
-    //     let l = parameter.CARD_LABLE.code;
-    //     Generator.addObject("param_obj", "sentry_object_t", `param;`);
-    //     Generator.addCode(`param.label = ${l};`);
-    //     Generator.addCode(`sentry.SetParam(Sentry2::kVisionFace,&param,(int)${num});`);
-    // }
-    //% block="Sentry set default" blockType="command"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    export function SensorSetDefault(parameter: any) {
-
-
-        Generator.addCode(`sentry.SensorSetDefault();`);
-    }
-
-    //% block="Sentry set coordinate type [COORDINATE]" blockType="command"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% COORDINATE.shadow="dropdown" COORDINATE.options="COORDINATE"
-    export function SeneorSetCoordinateType(parameter: any) {
-
-        let coordinate = parameter.COORDINATE.code;
-
-        Generator.addCode(`sentry.SeneorSetCoordinateType(${coordinate});`);
-    }
-
-    //% block="Sentry set the LED algorithm to detect a color of [LED_COLOR1] and not to detect a color of [LED_COLOR2]" blockType="command"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% LED_COLOR1.shadow="dropdown" LED_COLOR1.options="LED_COLOR"
-    //% LED_COLOR2.shadow="dropdown" LED_COLOR2.options="LED_COLOR"     
-    export function LedSetColor(parameter: any) {
-
-        let color1 = parameter.LED_COLOR1.code;
-        let color2 = parameter.LED_COLOR2.code;
-
-        Generator.addCode(`sentry.LedSetColor(${color1},${color2});`);
-    }
-
-    //% block="Sentry set camera [ZOOM]" blockType="command"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% ZOOM.shadow="dropdown" ZOOM.options="ZOOM" 
-    export function CameraSetZoom(parameter: any) {
-
-        let zoom = parameter.ZOOM.code;
-        Generator.addCode(`sentry.CameraSetZoom(${zoom});`);
-    }
-    // //% block="Sentry set camera [ROTATE]" blockType="command"
-    // //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    // //% ROTATE.shadow="dropdown" ROTATE.options="ROTATE" 
-    // export function CameraSetRotate(parameter: any) {
-    //     
-    //     let rotate = parameter.ROTATE.code;
-    //     Generator.addCode(`sentry.CameraSetRotate(${rotate});`);
-    // }
-
-    // //% block="Sentry set camera [FPS]" blockType="command"
-    // //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    // //% FPS.shadow="dropdown" FPS.options="FPS" 
-    // export function CameraSetFPS(parameter: any) {
-    //     
-    //     let fps = parameter.FPS.code;
-    //     Generator.addCode(`sentry.CameraSetFPS(${fps});`);
-    // }
-    //% block="Sentry set camera [AWB]" blockType="command"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% AWB.shadow="dropdown" AWB.options="AWB" 
-    export function CameraSetAwb(parameter: any) {
-
-        let awb = parameter.AWB.code;
-        Generator.addCode(`sentry.CameraSetAwb(${awb});`);
-    }
-
-    //% block="Sentry set uart baudrate [BUAD]" blockType="command"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% BUAD.shadow="dropdown" BUAD.options="BUAD" 
-    export function UartSetBaudrate(parameter: any) {
-
-        let buad = parameter.BUAD.code;
-        Generator.addCode(`sentry.UartSetBaudrate(${buad});`);
-    }
-
-    //% block="Sentry set [VISION_TYPE] default" blockType="command"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% VISION_TYPE.shadow="dropdown" VISION_TYPE.options="VISION"   
-    export function VisionSetDefault(parameter: any) {
-
-        let vision_type = parameter.VISION_TYPE.code;
-        Generator.addCode(`sentry.VisionSetDefault(${vision_type});`);
-    }
 
     //% block="Sentry get vision [VISION_TYPE] status" blockType="reporter"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
@@ -268,14 +175,6 @@ namespace Sentry {
         Generator.addCode([`sentry.GetValue(Sentry2::kVisionCard,kLabel,(int)${num})==${obj}`, Generator.ORDER_UNARY_POSTFIX]);
     }
 
-    //% block="Sentry Get [VISION_TYPE] Status" blockType="boolean"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% VISION_TYPE.shadow="dropdown" VISION_TYPE.options="VISION"
-    export function VisionGetStatus(parameter: any) {
-
-        let vision_type = parameter.VISION_TYPE.code;
-        Generator.addCode(`sentry.VisionGetStatus(${vision_type})`, Generator.ORDER_UNARY_POSTFIX]);
-    }
     //% block="Sentry image height" blockType="reporter"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
     export function rows(parameter: any) {

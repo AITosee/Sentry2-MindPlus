@@ -82,80 +82,6 @@ namespace Sentry {
         Generator.addCode(`sentry.SetParam(sentry_vision_e.kVisionBlob,[0, 0, ${w}, ${h}, ${l}],${num})`);
     }
 
-    //% block="Sentry set default" blockType="command"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    export function SensorSetDefault(parameter: any) {
-
-        Generator.addCode(`sentry.SensorSetDefault()`);
-    }
-
-    //% block="Sentry set coordinate type [COORDINATE]" blockType="command"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% COORDINATE.shadow="dropdown" COORDINATE.options="COORDINATE"
-    export function SeneorSetCoordinateType(parameter: any) {
-
-        let coordinate = parameter.COORDINATE.code;
-
-        Generator.addCode(`sentry.SeneorSetCoordinateType(${coordinate})`);
-    }
-
-    //% block="Sentry set the LED algorithm to detect a color of [LED_COLOR1] and not to detect a color of [LED_COLOR2]" blockType="command"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% LED_COLOR1.shadow="dropdown" LED_COLOR1.options="LED_COLOR"
-    //% LED_COLOR2.shadow="dropdown" LED_COLOR2.options="LED_COLOR"     
-    export function LedSetColor(parameter: any) {
-
-        let color1 = parameter.LED_COLOR1.code;
-        let color2 = parameter.LED_COLOR2.code;
-
-        Generator.addCode(`sentry.LedSetColor(${color1},${color2}, 1)`);
-    }
-
-    //% block="Sentry set camera [ZOOM]" blockType="command"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% ZOOM.shadow="dropdown" ZOOM.options="ZOOM" 
-    export function CameraSetZoom(parameter: any) {
-
-        let zoom = parameter.ZOOM.code;
-        Generator.addCode(`sentry.CameraSetZoom(${zoom})`);
-    }
-
-    // //% block="Sentry set camera [ROTATE]" blockType="command"
-    // //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    // //% ROTATE.shadow="dropdown" ROTATE.options="ROTATE" 
-    // export function CameraSetRotate(parameter: any) {
-    //     
-    //     let rotate = parameter.ROTATE.code;
-    //     Generator.addCode(`sentry.CameraSetRotate(${rotate})`);
-    // }
-
-    // //% block="Sentry set camera [FPS]" blockType="command"
-    // //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    // //% FPS.shadow="dropdown" FPS.options="FPS" 
-    // export function CameraSetFPS(parameter: any) {
-    //     
-    //     let fps = parameter.FPS.code;
-    //     Generator.addCode(`sentry.CameraSetFPS(${fps})`);
-    // }
-
-    //% block="Sentry set camera [AWB]" blockType="command"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% AWB.shadow="dropdown" AWB.options="AWB" 
-    export function CameraSetAwb(parameter: any) {
-
-        let awb = parameter.AWB.code;
-        Generator.addCode(`sentry.CameraSetAwb(${awb})`);
-    }
-
-    //% block="Sentry set [VISION_TYPE] default" blockType="command"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% VISION_TYPE.shadow="dropdown" VISION_TYPE.options="VISION"   
-    export function VisionSetDefault(parameter: any) {
-
-        let vision_type = parameter.VISION_TYPE.code;
-        Generator.addCode(`sentry.VisionSetDefault(${vision_type})`);
-    }
-
     //% block="Sentry get vision [VISION_TYPE] status" blockType="reporter"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
     //% VISION_TYPE.shadow="dropdown" VISION_TYPE.options="VISION"    
@@ -238,15 +164,6 @@ namespace Sentry {
         let num = parameter.NUM.code;
         let obj = parameter.CARD_LABLE.code;
         Generator.addCode([`sentry.GetValue(sentry_vision_e.kVisionCard,sentry_obj_info_e.kLabel,${num})==${obj}`, Generator.ORDER_UNARY_POSTFIX]);
-    }
-
-    //% block="Sentry Get [VISION_TYPE] Status" blockType="boolean"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% VISION_TYPE.shadow="dropdown" VISION_TYPE.options="VISION"
-    export function VisionGetStatus(parameter: any) {
-
-        let vision_type = parameter.VISION_TYPE.code;
-        Generator.addCode(`sentry.VisionGetStatus(${vision_type})`);
     }
 
     //% block="Sentry image height" blockType="reporter"
