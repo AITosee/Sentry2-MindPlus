@@ -40,7 +40,7 @@ namespace Sentry {
     //% block="Sentry set [VISION_TYPE] Param [NUM]" blockType="command"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
     //% VISION_TYPE.shadow="dropdown" VISION_TYPE.options="VISION"
-    //% NUM.shadow="range"   NUM.params.min=0    NUM.params.max=25    NUM.defl=1
+    //% NUM.shadow="range"   NUM.params.min=1    NUM.params.max=25    NUM.defl=1
     export function SetParamNum(parameter: any) {
 
         let vision_type = parameter.VISION_TYPE.code;
@@ -50,7 +50,7 @@ namespace Sentry {
 
     //% block="Sentry set color parameter [NUM] ROI area center point abscissa [XVALUE] ordinate [YVALUE] width [WIDTH] height [HIGHT]"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% NUM.shadow="range"   NUM.params.min=0    NUM.params.max=25    NUM.defl=0
+    //% NUM.shadow="range"   NUM.params.min=0    NUM.params.max=24    NUM.defl=0
     //% XVALUE.shadow="number"   XVALUE.defl=160
     //% YVALUE.shadow="number"   YVALUE.defl=120
     //% WIDTH.shadow="number"   WIDTH.defl=8
@@ -68,7 +68,7 @@ namespace Sentry {
 
     //% block="Sentry set color block detection parameter [NUM] minimum width [WIDTH] minimum height [HIGHT] to detect color [COLOR_LABLE]" blockType="command"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% NUM.shadow="range"   NUM.params.min=0    NUM.params.max=25    NUM.defl=0
+    //% NUM.shadow="range"   NUM.params.min=0    NUM.params.max=24    NUM.defl=0
     //% WIDTH.shadow="number"   WIDTH.defl=8
     //% HIGHT.shadow="number"   HIGHT.defl=8
     //% COLOR_LABLE.shadow="dropdown" COLOR_LABLE.options="COLOR_LABLE"
@@ -94,7 +94,7 @@ namespace Sentry {
     //% block="Sentry get [VISION_TYPE] [VISION_ID] [OBJ_INFO]" blockType="reporter"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
     //% VISION_TYPE.shadow="dropdown" VISION_TYPE.options="VISION"
-    //% VISION_ID.shadow="number"
+    //% VISION_ID.shadow="number" VISION_ID.defl=1
     //% OBJ_INFO.shadow="dropdown" OBJ_INFO.options="OBJ_INFO"    
     export function GetValue(parameter: any) {
 
@@ -113,7 +113,7 @@ namespace Sentry {
 
     //% block="Sentry get Color [NUM] [OBJ_RGB_INFO]" blockType="reporter"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% NUM.shadow="number"
+    //% NUM.shadow="number" NUM.defl=1
     //% OBJ_RGB_INFO.shadow="dropdown" OBJ_RGB_INFO.options="OBJ_RGB_INFO"    
     export function GetColorValue(parameter: any) {
 
@@ -124,7 +124,7 @@ namespace Sentry {
 
     //% block="Sentry Color detected [NUM] [COLOR_LABLE]" blockType="boolean"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% NUM.shadow="number"
+    //% NUM.shadow="number" NUM.defl=1
     //% COLOR_LABLE.shadow="dropdown" COLOR_LABLE.options="COLOR_LABLE"    
     export function GetColorLable(parameter: any) {
 
@@ -135,7 +135,7 @@ namespace Sentry {
 
     //% block="Sentry Blob detected [NUM] [COLOR_LABLE]" blockType="boolean"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% NUM.shadow="number"
+    //% NUM.shadow="number" NUM.defl=1
     //% COLOR_LABLE.shadow="dropdown" COLOR_LABLE.options="COLOR_LABLE"    
     export function GetColorBlob(parameter: any) {
 
@@ -146,7 +146,7 @@ namespace Sentry {
 
     //% block="Sentry get 20 Class detected [NUM] [Class20_LABLE]" blockType="boolean"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% NUM.shadow="number"
+    //% NUM.shadow="number" NUM.defl=1
     //% Class20_LABLE.shadow="dropdown" Class20_LABLE.options="Class20_LABLE"    
     export function GetClass20Lable(parameter: any) {
 
@@ -157,7 +157,7 @@ namespace Sentry {
 
     //% block="Sentry Card detected [NUM] [CARD_LABLE]" blockType="boolean"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    //% NUM.shadow="number"
+    //% NUM.shadow="number" NUM.defl=1
     //% CARD_LABLE.shadow="dropdown" CARD_LABLE.options="CARD_LABLE"    
     export function GetCardLable(parameter: any) {
 
