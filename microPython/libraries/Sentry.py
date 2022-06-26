@@ -920,7 +920,7 @@ class SentryBase:
         return err
 
     def SetParam(self, vision_type, param: list, param_id):
-        if param_id < 0 or param_id >= SENTRY_MAX_RESULT:
+        if param_id < 1 or param_id >= SENTRY_MAX_RESULT:
             return SENTRY_FAIL
 
         params = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -928,7 +928,7 @@ class SentryBase:
             params[i*2] = param[i] >> 8
             params[i*2+1] = param[i] & 0xff
 
-        return self.__stream.SetParam(vision_type, params, param_id)
+        return self.__stream.SetParam(vision_type, params, param_id - 1)
 
     def GetVisionState(self, vision_type):
         if vision_type >= sentry_vision_e.kVisionMaxType:
