@@ -112,13 +112,13 @@
     "Sentry.CARD_LABLE.SPEED_40|menu": "速度40",
     "Sentry.CARD_LABLE.SPEED_60|menu": "速度60",
     "Sentry.CARD_LABLE.SPEED_80|menu": "速度80",
-    "Sentry.CARD_LABLE.CHECK|menu": "叉号",
-    "Sentry.CARD_LABLE.CROSS|menu": "十字",
+    "Sentry.CARD_LABLE.CHECK|menu": "√",
+    "Sentry.CARD_LABLE.CROSS|menu": "X",
     "Sentry.CARD_LABLE.CIRCLE|menu": "圆圈",
     "Sentry.CARD_LABLE.SQUARE|menu": "正方形",
     "Sentry.CARD_LABLE.TRIANGLE|menu": "三角形",
     "Sentry.CARD_LABLE.PLUS|menu": "+",
     "Sentry.CARD_LABLE.MINUS|menu": "-",
-    "Sentry.CARD_LABLE.DIVIDE|menu": "~",
+    "Sentry.CARD_LABLE.DIVIDE|menu": "/",
     "Sentry.CARD_LABLE.EQUAL|menu": "="
 }
