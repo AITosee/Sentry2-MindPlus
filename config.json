@@ -17,11 +17,11 @@
     "win",
     "web"
   ],
-  "version": "1.0.3",
+  "version": "1.0.4",
   "asset": {
     "arduinoC": {
       "dir": "arduinoC/",
-      "version": "v1.2.4",
+      "version": "v1.3.0",
       "board": [
         "arduino",
         "arduinonano",
