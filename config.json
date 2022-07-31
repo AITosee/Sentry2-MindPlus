@@ -1,23 +1,23 @@
 {
   "name": {
-    "zh-cn": "Sentry",
-    "en": "Sentry"
+    "zh-cn": "Sentry2",
+    "en": "Sentry2"
   },
   "description": {
-    "zh-cn": "Sentry 库文件。",
-    "en": "Sentry libraries."
+    "zh-cn": "Sentry2 库文件。",
+    "en": "Sentry2 libraries."
   },
   "author": "AITosee",
   "email": "support@aitosee.com",
   "license": "MIT",
   "isTest": true,
   "isBoard": false,
-  "id": "Sentry",
+  "id": "Sentry2",
   "platform": [
     "win",
     "web"
   ],
-  "version": "1.0.4",
+  "version": "1.1.0",
   "asset": {
     "arduinoC": {
       "dir": "arduinoC/",
