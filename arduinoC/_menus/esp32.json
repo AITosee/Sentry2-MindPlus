@@ -132,23 +132,23 @@
         "menu": [
             [
                 "XValue",
-                "sentry_obj_info_e.kXValue"
+                "kXValue"
             ],
             [
                 "YValue",
-                "sentry_obj_info_e.kYValue"
+                "kYValue"
             ],
             [
                 "WidthValue",
-                "sentry_obj_info_e.kWidthValue"
+                "kWidthValue"
             ],
             [
                 "HeightValue",
-                "sentry_obj_info_e.kHeightValue"
+                "kHeightValue"
             ],
             [
                 "Label",
-                "sentry_obj_info_e.kLabel"
+                "kLabel"
             ]
         ]
     },
