@@ -128,6 +128,30 @@
             ]
         ]
     },
+    "OBJ_LINE_INFO": {
+        "menu": [
+            [
+                "XValue",
+                "sentry_obj_info_e.kXValue"
+            ],
+            [
+                "YValue",
+                "sentry_obj_info_e.kYValue"
+            ],
+            [
+                "WidthValue",
+                "sentry_obj_info_e.kWidthValue"
+            ],
+            [
+                "HeightValue",
+                "sentry_obj_info_e.kHeightValue"
+            ],
+            [
+                "Label",
+                "sentry_obj_info_e.kLabel"
+            ]
+        ]
+    },
     "OBJ_RGB_INFO": {
         "menu": [
             [

@@ -122,6 +122,17 @@ namespace Sentry2 {
         Generator.addCode([`sentry.GetValue(sentry_vision_e.kVisionColor,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
     }
 
+    //% block="Sentry2 get Line [NUM] [OBJ_LINE_INFO]" blockType="reporter"
+    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
+    //% NUM.shadow="number" NUM.defl=1
+    //% OBJ_LINE_INFO.shadow="dropdown" OBJ_LINE_INFO.options="OBJ_LINE_INFO"    
+    export function GetLindValue(parameter: any) {
+
+        let num = parameter.NUM.code;
+        let obj = parameter.OBJ_LINE_INFO.code;
+        Generator.addCode([`sentry.GetValue(sentry_vision_e.kVisionLine,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
+    }
+
     //% block="Sentry2 Color detected [NUM] [COLOR_LABLE]" blockType="boolean"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
     //% NUM.shadow="number" NUM.defl=1
@@ -164,21 +175,5 @@ namespace Sentry2 {
         let num = parameter.NUM.code;
         let obj = parameter.CARD_LABLE.code;
         Generator.addCode([`sentry.GetValue(sentry_vision_e.kVisionCard,sentry_obj_info_e.kLabel,${num})==${obj}`, Generator.ORDER_UNARY_POSTFIX]);
-    }
-
-    //% block="Sentry2 image height" blockType="reporter"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    export function rows(parameter: any) {
-
-
-        Generator.addCode([`sentry.rows()`, Generator.ORDER_UNARY_POSTFIX]);
-    }
-
-    //% block="Sentry2 image width" blockType="reporter"
-    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
-    export function cols(parameter: any) {
-
-
-        Generator.addCode([`sentry.cols()`, Generator.ORDER_UNARY_POSTFIX]);
     }
 }

@@ -17,11 +17,11 @@
     "win",
     "web"
   ],
-  "version": "1.1.0",
+  "version": "1.1.2",
   "asset": {
     "arduinoC": {
       "dir": "arduinoC/",
-      "version": "v1.3.0",
+      "version": "v1.3.2",
       "board": [
         "arduino",
         "arduinonano",
@@ -33,7 +33,7 @@
     },
     "microPython": {
       "dir": "microPython/",
-      "version": "v1.1.2",
+      "version": "v1.2.1",
       "board": [
         "esp32"
       ],

@@ -1,4 +1,4 @@
-__version__ = "Sentry2 v1.1.2"
+__version__ = "Sentry2 v1.2.1"
 __author__ = "weiyanfengv@gmail.com"
 __license__ = "http://unlicense.org"
 
@@ -115,8 +115,91 @@ class sentry_mode_e:
     kI2CMode = 0x01
     kUnknownMode = 0x02
 
-# Sentrys vision
-class sentry_vision_e:
+# sentry_led_color
+class sentry_led_color_e:
+    kLedClose = 0
+    kLedRed = 1
+    kLedGreen = 2
+    kLedYellow = 3
+    kLedBlue = 4
+    kLedPurple = 5
+    kLedCyan = 6
+    kLedWhite = 7
+
+# sentry_baudrate
+class sentry_baudrate_e:
+    kBaud9600 = 0x00
+    kBaud19200 = 0x01
+    kBaud38400 = 0x02
+    kBaud57600 = 0x03
+    kBaud115200 = 0x04
+    kBaud921600 = 0x05
+    kBaud1152000 = 0x06
+    kBaud2000000 = 0x07
+
+# sentry_camera_zoom
+class sentry_camera_zoom_e:
+    kZoomDefault = 0
+    kZoom1 = 1
+    kZoom2 = 2
+    kZoom3 = 3
+    kZoom4 = 4
+    kZoom5 = 5
+
+# sentry_camera_fps
+class sentry_camera_fps_e:
+    kFPSNormal = 0
+    kFPSHigh = 1
+
+# sentry_camera_white_balance
+class sentry_camera_white_balance_e:
+    kAutoWhiteBalance = 0
+    kLockWhiteBalance = 1
+    kWhiteLight = 2
+    kYellowLight = 3
+    kWhiteBalanceCalibrating = 4
+
+# Sentry color label
+class color_label_e:
+    kColorBlack = 1
+    kColorWhite = 2
+    kColorRed = 3
+    kColorGreen = 4
+    kColorBlue = 5
+    kColorYellow = 6
+
+# Sentry1 vision
+class sentry1_vision_e:
+    kVisionColor = 1
+    kVisionBlob = 2
+    kVisionBall = 3
+    kVisionLine = 4
+    kVisionCard = 6
+    kVisionBody = 7
+    kVisionMaxType = 8
+
+# Sentry1 card label
+class sentry1_card_label_e:
+    kCardForward = 1
+    kCardLeft = 2
+    kCardRight = 3
+    kCardTurnAround = 4
+    kCardPark = 5
+
+class sentry1_ball_label_e:
+    kBallTableTennis = 1
+    kBallTennis = 2
+
+# Sentry1 shape label
+class sentry1_shape_card_e:
+    kCardCheck = 11
+    kCardCross = 12
+    kCardCircle = 13
+    kCardSquare = 14
+    kCardTriangle = 15
+
+# Sentry2 vision
+class sentry2_vision_e:
     kVisionColor = 1
     kVisionBlob = 2
     kVisionAprilTag = 3
@@ -131,7 +214,7 @@ class sentry_vision_e:
     kVisionMaxType = 12
 
 # Sentry card label
-class card_label_e:
+class sentry2_card_label_e:
     kCardForward = 1
     kCardLeft = 2
     kCardRight = 3
@@ -211,14 +294,7 @@ class class20_label_e:
     kTrain = 19
     kMonitor = 20
 
-# Sentry color label
-class color_label_e:
-    kColorBlack = 1
-    kColorWhite = 2
-    kColorRed = 3
-    kColorGreen = 4
-    kColorBlue = 5
-    kColorYellow = 6
+
 
 LOG_OFF = 60
 LOG_CRITICAL = 50
@@ -366,7 +442,7 @@ class SentryI2CMethod:
 
         vision_state.detect = SENTRY_MAX_RESULT if SENTRY_MAX_RESULT < vision_state.detect else vision_state.detect
 
-        if sentry_vision_e.kVisionQrCode == vision_type:
+        if sentry2_vision_e.kVisionQrCode == vision_type:
             vision_state.detect = 1
 
         for i in range(vision_state.detect):
@@ -395,7 +471,7 @@ class SentryI2CMethod:
             if err:
                 return (err, vision_state)
 
-            if sentry_vision_e.kVisionQrCode == vision_type:
+            if sentry2_vision_e.kVisionQrCode == vision_type:
                 vision_state.result[i].bytestr = ""
                 for j in range(vision_state.result[i].data5):
                     result_id = int(j / 5 + 2)
@@ -417,7 +493,7 @@ class SentryI2CMethod:
         if err:
             return err
 
-        err = self.Set(kRegParamId, param_id+1)
+        err = self.Set(kRegParamId, param_id)
         if err:
             return err
 
@@ -625,7 +701,7 @@ class SentryUartMethod:
                         if not start_id:
                             return (SENTRY_OK, vision_state)
 
-                        if sentry_vision_e.kVisionQrCode == vision_type:
+                        if sentry2_vision_e.kVisionQrCode == vision_type:
                             vision_state.detect = 1
                         else:
                             vision_state.detect = stop_id-start_id+1
@@ -642,7 +718,7 @@ class SentryUartMethod:
                                                                    i + 12] << 8 | data[10 * i + 13]
                             vision_state.result[v_id].data5 = data[10 *
                                                                    i + 14] << 8 | data[10 * i + 15]
-                            if sentry_vision_e.kVisionQrCode == vision_type:                       
+                            if sentry2_vision_e.kVisionQrCode == vision_type:                       
                                 vision_state.result[v_id].bytestr = ""
                                 for j in range(vision_state.result[v_id].data5):
                                     vision_state.result[v_id].bytestr += chr(data[17 + 2 * j])
@@ -662,7 +738,7 @@ class SentryUartMethod:
 
     def SetParam(self, vision_id, param: list, param_id):
         data_list = [SENTRY_PROTOC_START, 0, self.__mu_address,
-                     SENTRY_PROTOC_SET_PARAM, vision_id, param_id+1, param_id+1]
+                     SENTRY_PROTOC_SET_PARAM, vision_id, param_id, param_id]
 
         data_list += param
         data_list[1] = len(data_list)+2
@@ -876,7 +952,7 @@ class SentryBase:
         return err
 
     def SetParam(self, vision_type, param: list, param_id):
-        if param_id < 1 or param_id >= SENTRY_MAX_RESULT:
+        if param_id < 0 or param_id >= SENTRY_MAX_RESULT:
             return SENTRY_FAIL
 
         params = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -884,10 +960,10 @@ class SentryBase:
             params[i*2] = param[i] >> 8
             params[i*2+1] = param[i] & 0xff
 
-        return self.__stream.SetParam(vision_type, params, param_id - 1)
+        return self.__stream.SetParam(vision_type, params, param_id)
 
     def GetVisionState(self, vision_type):
-        if vision_type >= sentry_vision_e.kVisionMaxType:
+        if vision_type >= sentry2_vision_e.kVisionMaxType:
             return 0
 
         return self.__vision_states[vision_type-1]
@@ -964,7 +1040,7 @@ class SentryBase:
 
     def UpdateResult(self, vision_type):
 
-        if vision_type >= sentry_vision_e.kVisionMaxType:
+        if vision_type >= sentry2_vision_e.kVisionMaxType:
             return 0
 
         vision_state = self.__vision_states[vision_type-1]
@@ -994,7 +1070,7 @@ class SentryBase:
 
     def __read(self, vision_type, object_inf, obj_id):
 
-        if vision_type >= sentry_vision_e.kVisionMaxType:
+        if vision_type >= sentry2_vision_e.kVisionMaxType:
             return 0
 
         vision_state = self.__vision_states[vision_type-1]
@@ -1028,7 +1104,7 @@ class SentryBase:
             return 0
 
     def GetQrCodeValue(self):
-        vision_state = self.__vision_states[sentry_vision_e.kVisionQrCode-1]
+        vision_state = self.__vision_states[sentry2_vision_e.kVisionQrCode-1]
         if vision_state == None:
             return ""
 
@@ -1061,7 +1137,311 @@ class SentryBase:
                 break
 
         return err
+        
+    def SeneorSetCoordinateType(self, coordinate):
+        err, hw_config_reg_value = self.__stream.Get(kRegHWConfig)
+        if err:
+            return err
+        
+        if(((hw_config_reg_value & 0x0c) >> 2) != coordinate):
+            hw_config_reg_value &= 0xF3
+            hw_config_reg_value |= (coordinate & 0x03) << 2
+            err = self.__stream.Set(kRegHWConfig,
+                        hw_config_reg_value)
+        return err
 
+    def LedSetColor(self, detected_color, undetected_color, level):
+
+        err, led_level = self.__stream.Get(kRegLedLevel)
+        if err:
+            return err
+
+        led_level &= 0xF0
+        led_level |= (level & 0x0F)
+        self.__stream.Set(kRegLedLevel, led_level)
+
+        err, led_reg_value = self.__stream.Get(kRegLed)
+        if err:
+            return err
+
+        led_reg_value &= 0x10
+
+        if detected_color == undetected_color:
+            led_reg_value |= 0x01      
+
+        led_reg_value |= (detected_color & 0x07) << 1
+        led_reg_value |= (undetected_color & 0x07) << 5
+
+        err = self.__stream.Set(kRegLed, led_reg_value)
+        if err:
+            return err
+
+        return SENTRY_OK
+
+    def LcdSetMode(self, on):
+
+        err, lcd_reg_value = self.__stream.Get(kRegLcdCongig)
+        if err:
+            return err
+
+        lcd_reg_value &= 0xFe
+        lcd_reg_value |= (on & 0x01)
+
+        err = self.__stream.Set(kRegLcdCongig, lcd_reg_value)
+        if err:
+            return err
+
+        return SENTRY_OK
+
+    def CameraSetZoom(self, zoom):
+
+        err, camera_reg_value = self.__stream.Get(
+            kRegCameraConfig1)
+        if err:
+            return err
+
+        gzoom = camera_reg_value & 0x07
+
+        if zoom != gzoom:
+            camera_reg_value &= 0xf8
+            camera_reg_value |= zoom & 0x07
+            err = self.__stream.Set(
+                kRegCameraConfig1, camera_reg_value)
+            if err:
+                return err
+
+        return err
+
+    def CameraSetRotate(self, enable):
+
+        err, camera_reg_value = self.__stream.Get(
+            kRegCameraConfig1)
+        if err:
+            return err
+
+        rotate = (camera_reg_value >> 3) & 0x01
+        if rotate != enable:
+            camera_reg_value &= 0xf7
+            camera_reg_value |= (enable & 0x01) << 3
+
+            err = self.__stream.Set(
+                kRegCameraConfig1, camera_reg_value)
+            if err:
+                return err
+
+        return err
+
+    def CameraSetFPS(self, fps):
+
+        err, camera_reg_value = self.__stream.Get(
+            kRegCameraConfig1)
+        if err:
+            return err
+
+        gfps = (camera_reg_value >> 4) & 0x01
+        if fps != gfps:
+            camera_reg_value &= 0xef
+            camera_reg_value |= (fps & 0x01) << 4
+            err = self.__stream.Set(
+                kRegCameraConfig1, camera_reg_value)
+            if err:
+                return err
+
+        return err
+
+    def CameraSetAwb(self, awb):
+
+        err, camera_reg_value = self.__stream.Get(
+            kRegCameraConfig1)
+        if err:
+            return err
+
+        white_balance = (camera_reg_value >> 5) & 0x03
+
+        if sentry_camera_white_balance_e.kLockWhiteBalance == awb:
+            camera_reg_value &= 0x1f
+            camera_reg_value |= (awb & 0x03) << 5
+            err = self.__stream.Set(
+                kRegCameraConfig1, camera_reg_value)
+            if err:
+                return err
+            while (camera_reg_value >> 7) == 0:
+                err, camera_reg_value = self.__stream.Get(
+                    kRegCameraConfig1)
+                if err:
+                    return err
+
+        elif white_balance != awb:
+            camera_reg_value &= 0x1f
+            camera_reg_value |= (awb & 0x03) << 5
+            err = self.__stream.Set(
+                kRegCameraConfig1, camera_reg_value)
+            if err:
+                return err
+
+        return err
+
+    def CameraSetBrightness(self, Brightness):
+
+        err, camera_reg_value = self.__stream.Get(
+            kRegCameraConfig3)
+        if err:
+            return err
+
+        gBrightness = (camera_reg_value) & 0x0f
+        if Brightness != gBrightness:
+            camera_reg_value &= 0xf0
+            camera_reg_value |= (Brightness & 0x0f)
+            err = self.__stream.Set(
+                kRegCameraConfig3, camera_reg_value)
+            if err:
+                return err
+
+        return err
+
+    def CameraSetContrast(self, Contrast):
+
+        err, camera_reg_value = self.__stream.Get(
+            kRegCameraConfig3)
+        if err:
+            return err
+
+        gContrast = (camera_reg_value >> 4) & 0x0f
+        if Contrast != gContrast:
+            camera_reg_value &= 0x0f
+            camera_reg_value |= (Contrast & 0x0f) << 4
+            err = self.__stream.Set(
+                kRegCameraConfig3, camera_reg_value)
+            if err:
+                return err
+
+        return err
+
+    def CameraSetSaturation(self, Saturation):
+
+        err, camera_reg_value = self.__stream.Get(
+            kRegCameraConfig4)
+        if err:
+            return err
+
+        gSaturation = (camera_reg_value) & 0x0f
+        if Saturation != gSaturation:
+            camera_reg_value &= 0xf0
+            camera_reg_value |= (Saturation & 0x0f)
+            err = self.__stream.Set(
+                kRegCameraConfig4, camera_reg_value)
+            if err:
+                return err
+
+        return err
+
+    def CameraSetShaprness(self, Shaprness):
+
+        err, camera_reg_value = self.__stream.Get(
+            kRegCameraConfig5)
+        if err:
+            return err
+
+        gShaprness = (camera_reg_value) & 0x0f
+        if Shaprness != gShaprness:
+            camera_reg_value &= 0xf0
+            camera_reg_value |= (Shaprness & 0x0f)
+            err = self.__stream.Set(
+                kRegCameraConfig5, camera_reg_value)
+            if err:
+                return err
+
+        return err
+
+    def CameraGetZoom(self):
+
+        err, camera_reg_value = self.__stream.Get(
+            kRegCameraConfig1)
+        if err:
+            pass
+
+        return camera_reg_value & 0x07
+
+    def CameraGetAwb(self):
+
+        err, camera_reg_value = self.__stream.Get(
+            kRegCameraConfig1)
+        if err:
+            pass
+
+        return (camera_reg_value >> 5) & 0x03
+
+    def CameraGetRotate(self):
+
+        err, camera_reg_value = self.__stream.Get(
+            kRegCameraConfig1)
+        if err:
+            pass
+
+        return (camera_reg_value >> 3) & 0x01
+
+    def CameraGetFPS(self):
+
+        err, camera_reg_value = self.__stream.Get(
+            kRegCameraConfig1)
+        if err:
+            pass
+
+        return (camera_reg_value >> 4) & 0x01
+
+    def CameraGetBrightness(self):
+
+        err, camera_reg_value = self.__stream.Get(
+            kRegCameraConfig3)
+        if err:
+            pass
+
+        return  (camera_reg_value) & 0x0f
+
+
+    def CameraGetContrast(self):
+
+        err, camera_reg_value = self.__stream.Get(
+            kRegCameraConfig3)
+        if err:
+            pass
+
+        return (camera_reg_value >> 4) & 0x0f
+
+
+    def CameraGetSaturation(self):
+
+        err, camera_reg_value = self.__stream.Get(
+            kRegCameraConfig4)
+        if err:
+            pass
+
+        return (camera_reg_value) & 0x0f
+
+    def CameraGetShaprness(self):
+
+        err, camera_reg_value = self.__stream.Get(
+            kRegCameraConfig5)
+        if err:
+            pass
+
+        return (camera_reg_value) & 0x0f
+
+    def UartSetBaudrate(self, baud):
+
+        err, uart_reg_value = self.__stream.Get(kRegUart)
+        baudrate = uart_reg_value & 0x07
+        if (not err) and baudrate != baud:
+            uart_reg_value &= 0xf8
+            uart_reg_value |= baud & 0x07
+            err = self.__stream.Set(kRegUart, uart_reg_value)
+
+        return err
+
+class Sentry1(SentryBase):
+    SENTRY1_DEVICE_ID = 0x05
+    def __init__(self, address=0x60, log_level=LOG_ERROR):
+        super().__init__(self.SENTRY1_DEVICE_ID,address,log_level)
 
 class Sentry2(SentryBase):
     SENTRY2_DEVICE_ID = 0x04
