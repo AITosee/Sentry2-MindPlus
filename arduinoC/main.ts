@@ -22,6 +22,14 @@ namespace Sentry2 {
         Generator.addCode(`while (SENTRY_OK != sentry.begin(&${mode})) {yield();}`);
     }
 
+    //% block="Sentry2 Set camera [AWB]" blockType="command"
+    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
+    //% AWB.shadow="dropdown" AWB.options="AWB" 
+    export function CameraSetAwb(parameter: any) {
+        let awb = parameter.AWB.code;
+        Generator.addCode(`sentry.CameraSetAwb(${awb});`);
+    }
+
     //% block="Sentry2 [VISION_STA] vision [VISION_TYPE]" blockType="command"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
     //% VISION_TYPE.shadow="dropdown" VISION_TYPE.options="VISION"
@@ -48,6 +56,34 @@ namespace Sentry2 {
         let num = parameter.NUM.code;
         Generator.addCode(`sentry.SetParamNum(${vision_type},(int)${num});`);
     }
+
+    //% block="Sentry2 set [VISION_TYPE] param index [NUM] param1 [XVALUE] param2 [YVALUE] param3 [WIDTH] param4 [HIGHT] param5 [COLOR_LABLE]"
+    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
+    //% VISION_TYPE.shadow="dropdown" VISION_TYPE.options="VISION"
+    //% NUM.shadow="range"   NUM.params.min=1    NUM.params.max=25    NUM.defl=1
+    //% XVALUE.shadow="number"   XVALUE.defl=0
+    //% YVALUE.shadow="number"   YVALUE.defl=0
+    //% WIDTH.shadow="number"   WIDTH.defl=0
+    //% HIGHT.shadow="number"   HIGHT.defl=0
+    //% COLOR_LABLE.shadow="number"   COLOR_LABLE.defl=0
+    export function SetVisionParam(parameter: any) {
+        let vision_type = parameter.VISION_TYPE.code;
+        let num = parameter.NUM.code;
+        let x = parameter.XVALUE.code;
+        let y = parameter.YVALUE.code;
+        let w = parameter.WIDTH.code;
+        let h = parameter.HIGHT.code;
+        let l = parameter.COLOR_LABLE.code;
+
+        Generator.addObject("param_obj", "sentry_object_t", `param;`);
+        Generator.addCode(`param.x_value = ${x};`);
+        Generator.addCode(`param.y_value = ${y};`);
+        Generator.addCode(`param.width = ${w};`);
+        Generator.addCode(`param.height = ${h};`);
+        Generator.addCode(`param.label = ${l};`);
+        Generator.addCode(`sentry.SetParam(${vision_type},&param,(int)${num});`);
+    }
+
     //% block="Sentry2 set color parameter [NUM] ROI area center point abscissa [XVALUE] ordinate [YVALUE] width [WIDTH] height [HIGHT]"
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
     //% NUM.shadow="range"   NUM.params.min=1    NUM.params.max=25    NUM.defl=1
@@ -109,6 +145,19 @@ namespace Sentry2 {
         let vision_type = parameter.VISION_TYPE.code;
         let num = parameter.VISION_ID.code;
         let obj = parameter.OBJ_INFO.code;
+        Generator.addCode([`sentry.GetValue(${vision_type},${obj},(int)${num})`, Generator.ORDER_UNARY_POSTFIX]);
+    }
+
+    //% block="Sentry2 get [VISION_TYPE] [VISION_ID] [OBJ_GEN_INFO]" blockType="reporter"
+    //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"
+    //% VISION_TYPE.shadow="dropdown" VISION_TYPE.options="VISION"
+    //% VISION_ID.shadow="number"  VISION_ID.defl=0
+    //% OBJ_GEN_INFO.shadow="dropdown" OBJ_GEN_INFO.options="OBJ_GEN_INFO"    
+    export function GetGenValue(parameter: any) {
+
+        let vision_type = parameter.VISION_TYPE.code;
+        let num = parameter.VISION_ID.code;
+        let obj = parameter.OBJ_GEN_INFO.code;
         Generator.addCode([`sentry.GetValue(${vision_type},${obj},(int)${num})`, Generator.ORDER_UNARY_POSTFIX]);
     }
 

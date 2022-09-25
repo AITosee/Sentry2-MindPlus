@@ -88,6 +88,10 @@
             [
                 "VisionMotionDetect",
                 "Sentry2::kVisionMotionDetect"
+            ],
+            [
+                "VisionCustom",
+                "Sentry2::kVisionCustom"
             ]
         ],
         "default_GetValue_VISION_TYPE": "Sentry2::kVisionBlob"
@@ -124,6 +128,30 @@
             ],
             [
                 "Label",
+                "kLabel"
+            ]
+        ]
+    },
+    "OBJ_GEN_INFO": {
+        "menu": [
+            [
+                "Value1",
+                "kXValue"
+            ],
+            [
+                "Value2",
+                "kYValue"
+            ],
+            [
+                "Value3",
+                "kWidthValue"
+            ],
+            [
+                "Value4",
+                "kHeightValue"
+            ],
+            [
+                "Value5",
                 "kLabel"
             ]
         ]

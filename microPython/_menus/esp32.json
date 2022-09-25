@@ -39,46 +39,50 @@
         "menu": [
             [
                 "VisionColor",
-                "sentry_vision_e.kVisionColor"
+                "sentry2_vision_e.kVisionColor"
             ],
             [
                 "VisionBlob",
-                "sentry_vision_e.kVisionBlob"
+                "sentry2_vision_e.kVisionBlob"
             ],
             [
                 "VisionAprilTag",
-                "sentry_vision_e.kVisionAprilTag"
+                "sentry2_vision_e.kVisionAprilTag"
             ],
             [
                 "VisionLine",
-                "sentry_vision_e.kVisionLine"
+                "sentry2_vision_e.kVisionLine"
             ],
             [
                 "VisionLearning",
-                "sentry_vision_e.kVisionLearning"
+                "sentry2_vision_e.kVisionLearning"
             ],
             [
                 "VisionCard",
-                "sentry_vision_e.kVisionCard"
+                "sentry2_vision_e.kVisionCard"
             ],
             [
                 "VisionFace",
-                "sentry_vision_e.kVisionFace"
+                "sentry2_vision_e.kVisionFace"
             ],
             [
                 "Vision20Classes",
-                "sentry_vision_e.kVision20Classes"
+                "sentry2_vision_e.kVision20Classes"
             ],
             [
                 "VisionQrCode",
-                "sentry_vision_e.kVisionQrCode"
+                "sentry2_vision_e.kVisionQrCode"
             ],
             [
                 "VisionMotionDetect",
-                "sentry_vision_e.kVisionMotionDetect"
+                "sentry2_vision_e.kVisionMotionDetect"
+            ],
+            [
+                "VisionCustom",
+                "sentry2_vision_e.kVisionCustom"
             ]
         ],
-        "default_GetValue_VISION_TYPE": "sentry_vision_e.kVisionBlob"
+        "default_GetValue_VISION_TYPE": "sentry2_vision_e.kVisionBlob"
     },
     "VISION_STA": {
         "menu": [
@@ -124,6 +128,30 @@
             ],
             [
                 "Label",
+                "sentry_obj_info_e.kLabel"
+            ]
+        ]
+    },
+    "OBJ_GEN_INFO": {
+        "menu": [
+            [
+                "Value1",
+                "sentry_obj_info_e.kXValue"
+            ],
+            [
+                "Value2",
+                "sentry_obj_info_e.kYValue"
+            ],
+            [
+                "Value3",
+                "sentry_obj_info_e.kWidthValue"
+            ],
+            [
+                "Value4",
+                "sentry_obj_info_e.kHeightValue"
+            ],
+            [
+                "Value5",
                 "sentry_obj_info_e.kLabel"
             ]
         ]
@@ -436,223 +464,223 @@
         "menu": [
             [
                 "FORWARD",
-                "Sentry2::kCardForward"
+                "sentry2_card_label_e.kCardForward"
             ],
             [
                 "LEFT",
-                "Sentry2::kCardLeft"
+                "sentry2_card_label_e.kCardLeft"
             ],
             [
                 "RIGHT",
-                "Sentry2::kCardRight"
+                "sentry2_card_label_e.kCardRight"
             ],
             [
                 "TURN_AROUND",
-                "Sentry2::kCardTurnAround"
+                "sentry2_card_label_e.kCardTurnAround"
             ],
             [
                 "PARK",
-                "Sentry2::kCardPark"
+                "sentry2_card_label_e.kCardPark"
             ],
             [
                 "GREEN_LIGHT",
-                "Sentry2::kCardGreenLight"
+                "sentry2_card_label_e.kCardGreenLight"
             ],
             [
                 "RED_LIGHT",
-                "Sentry2::kCardRedLight"
+                "sentry2_card_label_e.kCardRedLight"
             ],
             [
                 "SPEED_40",
-                "Sentry2::kCardSpeed40"
+                "sentry2_card_label_e.kCardSpeed40"
             ],
             [
                 "SPEED_60",
-                "Sentry2::kCardSpeed60"
+                "sentry2_card_label_e.kCardSpeed60"
             ],
             [
                 "SPEED_80",
-                "Sentry2::kCardSpeed80"
+                "sentry2_card_label_e.kCardSpeed80"
             ],
             [
                 "CHECK",
-                "Sentry2::kCardCheck"
+                "sentry2_card_label_e.kCardCheck"
             ],
             [
                 "CROSS",
-                "Sentry2::kCardCross"
+                "sentry2_card_label_e.kCardCross"
             ],
             [
                 "CIRCLE",
-                "Sentry2::kCardCircle"
+                "sentry2_card_label_e.kCardCircle"
             ],
             [
                 "SQUARE",
-                "Sentry2::kCardSquare"
+                "sentry2_card_label_e.kCardSquare"
             ],
             [
                 "TRIANGLE",
-                "Sentry2::kCardTriangle"
+                "sentry2_card_label_e.kCardTriangle"
             ],
             [
                 "PLUS",
-                "Sentry2::kCardPlus"
+                "sentry2_card_label_e.kCardPlus"
             ],
             [
                 "MINUS",
-                "Sentry2::kCardMinus"
+                "sentry2_card_label_e.kCardMinus"
             ],
             [
                 "DIVIDE",
-                "Sentry2::kCardDivide"
+                "sentry2_card_label_e.kCardDivide"
             ],
             [
                 "EQUAL",
-                "Sentry2::kCardEqual"
+                "sentry2_card_label_e.kCardEqual"
             ],
             [
                 "0",
-                "Sentry2::kCardZero"
+                "sentry2_card_label_e.kCardZero"
             ],
             [
                 "1",
-                "Sentry2::kCardOne"
+                "sentry2_card_label_e.kCardOne"
             ],
             [
                 "2",
-                "Sentry2::kCardTwo"
+                "sentry2_card_label_e.kCardTwo"
             ],
             [
                 "3",
-                "Sentry2::kCardThree"
+                "sentry2_card_label_e.kCardThree"
             ],
             [
                 "4",
-                "Sentry2::kCardFour"
+                "sentry2_card_label_e.kCardFour"
             ],
             [
                 "5",
-                "Sentry2::kCardFive"
+                "sentry2_card_label_e.kCardFive"
             ],
             [
                 "6",
-                "Sentry2::kCardSix"
+                "sentry2_card_label_e.kCardSix"
             ],
             [
                 "7",
-                "Sentry2::kCardSeven"
+                "sentry2_card_label_e.kCardSeven"
             ],
             [
                 "8",
-                "Sentry2::kCardEight"
+                "sentry2_card_label_e.kCardEight"
             ],
             [
                 "9",
-                "Sentry2::kCardNine"
+                "sentry2_card_label_e.kCardNine"
             ],
             [
                 "Aa",
-                "Sentry2::kCardA"
+                "sentry2_card_label_e.kCardA"
             ],
             [
                 "Bb",
-                "Sentry2::kCardB"
+                "sentry2_card_label_e.kCardB"
             ],
             [
                 "Cc",
-                "Sentry2::kCardC"
+                "sentry2_card_label_e.kCardC"
             ],
             [
                 "Dd",
-                "Sentry2::kCardD"
+                "sentry2_card_label_e.kCardD"
             ],
             [
                 "Ee",
-                "Sentry2::kCardE"
+                "sentry2_card_label_e.kCardE"
             ],
             [
                 "Ff",
-                "Sentry2::kCardF"
+                "sentry2_card_label_e.kCardF"
             ],
             [
                 "Gg",
-                "Sentry2::kCardG"
+                "sentry2_card_label_e.kCardG"
             ],
             [
                 "Hh",
-                "Sentry2::kCardH"
+                "sentry2_card_label_e.kCardH"
             ],
             [
                 "Ii",
-                "Sentry2::kCardI"
+                "sentry2_card_label_e.kCardI"
             ],
             [
                 "Jj",
-                "Sentry2::kCardJ"
+                "sentry2_card_label_e.kCardJ"
             ],
             [
                 "Kk",
-                "Sentry2::kCardK"
+                "sentry2_card_label_e.kCardK"
             ],
             [
                 "Ll",
-                "Sentry2::kCardL"
+                "sentry2_card_label_e.kCardL"
             ],
             [
                 "Mm",
-                "Sentry2::kCardM"
+                "sentry2_card_label_e.kCardM"
             ],
             [
                 "Nn",
-                "Sentry2::kCardN"
+                "sentry2_card_label_e.kCardN"
             ],
             [
                 "Oo",
-                "Sentry2::kCardO"
+                "sentry2_card_label_e.kCardO"
             ],
             [
                 "Pp",
-                "Sentry2::kCardP"
+                "sentry2_card_label_e.kCardP"
             ],
             [
                 "Qq",
-                "Sentry2::kCardQ"
+                "sentry2_card_label_e.kCardQ"
             ],
             [
                 "Rr",
-                "Sentry2::kCardR"
+                "sentry2_card_label_e.kCardR"
             ],
             [
                 "Ss",
-                "Sentry2::kCardS"
+                "sentry2_card_label_e.kCardS"
             ],
             [
                 "Tt",
-                "Sentry2::kCardT"
+                "sentry2_card_label_e.kCardT"
             ],
             [
                 "Uu",
-                "Sentry2::kCardU"
+                "sentry2_card_label_e.kCardU"
             ],
             [
                 "Vv",
-                "Sentry2::kCardV"
+                "sentry2_card_label_e.kCardV"
             ],
             [
                 "Ww",
-                "Sentry2::kCardW"
+                "sentry2_card_label_e.kCardW"
             ],
             [
                 "Xx",
-                "Sentry2::kCardX"
+                "sentry2_card_label_e.kCardX"
             ],
             [
                 "Yy",
-                "Sentry2::kCardY"
+                "sentry2_card_label_e.kCardY"
             ],
             [
                 "Zz",
-                "Sentry2::kCardZ"
+                "sentry2_card_label_e.kCardZ"
             ]
         ]
     }
