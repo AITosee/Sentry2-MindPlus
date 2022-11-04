@@ -17,7 +17,7 @@
     "win",
     "web"
   ],
-  "version": "1.1.3",
+  "version": "1.1.5",
   "asset": {
     "arduinoC": {
       "dir": "arduinoC/",
@@ -27,7 +27,10 @@
         "arduinonano",
         "mega2560",
         "microbit",
-        "esp32"
+        "esp32",
+        "firebeetleesp32",
+        "telloesp32",
+        "leonardo"
       ],
       "main": "main.ts"
     },

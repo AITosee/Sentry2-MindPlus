@@ -165,7 +165,7 @@ namespace Sentry2 {
     //% SENTRY.shadow="dropdown" SENTRY.options="SENTRY"  
     export function GetQrCodeValue(parameter: any) {
 
-        Generator.addCode([`sentry.GetQrCodeValue()`, Generator.ORDER_UNARY_POSTFIX]);
+        Generator.addCode([`String(sentry.GetQrCodeValue())`, Generator.ORDER_UNARY_POSTFIX]);
     }
 
 
