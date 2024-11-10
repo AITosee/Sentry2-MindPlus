@@ -1,4 +1,20 @@
 {
+    "MODE": {
+        "menu": [
+            [
+                "I2C",
+                "Wire"
+            ],
+            [
+                "Serial0",
+                "Serial"
+            ],
+            [
+                "Serial1",
+                "Serial1"
+            ]
+        ]
+    },
     "SENTRY": {
         "menu": [
             [
@@ -16,22 +32,6 @@
             [
                 "0x63",
                 "0x63"
-            ]
-        ]
-    },
-    "MODE": {
-        "menu": [
-            [
-                "I2C",
-                "Wire"
-            ],
-            [
-                "Serial0",
-                "Serial"
-            ],
-            [
-                "Serial1",
-                "Serial1"
             ]
         ]
     },

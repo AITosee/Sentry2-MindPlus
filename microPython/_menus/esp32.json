@@ -347,8 +347,8 @@
                 "color_label_e.kColorYellow"
             ]
         ],
-        "default_SetBlobParam_COLOR_LABLE": "sentry2_vision_e.kColorRed",
-        "default_GetColorBlob_COLOR_LABLE": "sentry2_vision_e.kColorRed"
+        "default_SetBlobParam_COLOR_LABLE": "color_label_e.kColorRed",
+        "default_GetColorBlob_COLOR_LABLE": "color_label_e.kColorRed"
     },
     "Class20_LABLE": {
         "menu": [
