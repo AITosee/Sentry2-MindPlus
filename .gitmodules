@@ -1,6 +1,6 @@
 [submodule "arduinoC/libraries/Sentry-Arduino"]
 	path = arduinoC/libraries/Sentry-Arduino
-	url = git@github.com:AITosee/Sentry-Arduino.git
+	url = https://github.com/AITosee/Sentry-Arduino.git
 [submodule "microPython/libraries/Sentry-microPython"]
 	path = microPython/libraries/Sentry-microPython
-	url = git@github.com:AITosee/Sentry-microPython.git
+	url = https://github.com/AITosee/Sentry-microPython.git
