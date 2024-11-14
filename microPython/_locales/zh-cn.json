@@ -104,7 +104,7 @@
   "Sentry2.Class20_LABLE.Boat|menu": "船",
   "Sentry2.Class20_LABLE.Bottle|menu": "瓶子",
   "Sentry2.Class20_LABLE.Bus|menu": "公交车",
-  "Sentry2.Class20_LABLE.Car|menu": "小汽车",
+  "Sentry2.Class20_LABLE.Car|menu": "汽车",
   "Sentry2.Class20_LABLE.Cat|menu": "猫",
   "Sentry2.Class20_LABLE.Chair|menu": "椅子",
   "Sentry2.Class20_LABLE.Cow|menu": "牛",
@@ -117,5 +117,5 @@
   "Sentry2.Class20_LABLE.Sheep|menu": "绵羊",
   "Sentry2.Class20_LABLE.Sofa|menu": "沙发",
   "Sentry2.Class20_LABLE.Train|menu": "火车",
-  "Sentry2.Class20_LABLE.TvMonitor|menu": "电视"
+  "Sentry2.Class20_LABLE.TvMonitor|menu": "监视器"
 }

@@ -134,14 +134,6 @@
                 "Sentry2::kVisionBlob"
             ],
             [
-                "Learning",
-                "Sentry2::kVisionLearning"
-            ],
-            [
-                "Face",
-                "Sentry2::kVisionFace"
-            ],
-            [
                 "Custom",
                 "Sentry2::kVisionCustom"
             ]
