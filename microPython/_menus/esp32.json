@@ -126,6 +126,14 @@
                 "sentry2_vision_e.kVisionBlob"
             ],
             [
+                "Learning",
+                "sentry2_vision_e.kVisionLearning"
+            ],
+            [
+                "Face",
+                "sentry2_vision_e.kVisionFace"
+            ],
+            [
                 "Custom",
                 "sentry2_vision_e.kVisionCustom"
             ]
