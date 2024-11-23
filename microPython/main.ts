@@ -55,8 +55,8 @@ namespace Sentry2 {
 
     //% block=" Set   Sentry2   algo Color   x-coord[XVALUE] y-coord [YVALUE] width[WIDTH] height[HIGHT] paramset[NUM]"
     //% NUM.shadow="range"   NUM.params.min=1    NUM.params.max=25    NUM.defl=1
-    //% XVALUE.shadow="number"   XVALUE.defl=150
-    //% YVALUE.shadow="number"   YVALUE.defl=120
+    //% XVALUE.shadow="number"   XVALUE.defl=50
+    //% YVALUE.shadow="number"   YVALUE.defl=50
     //% WIDTH.shadow="number"   WIDTH.defl=3
     //% HIGHT.shadow="number"   HIGHT.defl=4
     export function SetColorParam(parameter: any) {
