@@ -138,16 +138,17 @@
                 "Sentry2::kVisionCustom"
             ]
         ],
-        "default_SetVisionParam_VISION_TYPE": "Sentry2::kVisionCustom"
+        "default_SetVisionParam_VISION_TYPE": "Sentry2::kVisionCustom",
+        "default_GetCustomValue_VISION_TYPE": "Sentry2::kVisionCustom"
     },
     "VISION_STA": {
         "menu": [
             [
-                "Open",
+                "run",
                 "ON"
             ],
             [
-                "Close",
+                "stop",
                 "OFF"
             ]
         ]
@@ -179,23 +180,23 @@
     "OBJ_INFO_CUSTOM": {
         "menu": [
             [
-                "Value1",
+                "returnValue1",
                 "kXValue"
             ],
             [
-                "Value2",
+                "returnValue2",
                 "kYValue"
             ],
             [
-                "Value3",
+                "returnValue3",
                 "kWidthValue"
             ],
             [
-                "Value4",
+                "returnValue4",
                 "kHeightValue"
             ],
             [
-                "Value5",
+                "returnValue5",
                 "kLabel"
             ]
         ]
@@ -398,7 +399,7 @@
             ],
             [
                 "DiningTable",
-                "Sentry2::kTable"
+                "Sentry2::kDiningTable"
             ],
             [
                 "Dog",
@@ -418,7 +419,7 @@
             ],
             [
                 "PottedPlant",
-                "Sentry2::kPlant"
+                "Sentry2::kPottedPlant"
             ],
             [
                 "Sheep",
@@ -434,7 +435,7 @@
             ],
             [
                 "TvMonitor",
-                "Sentry2::kMonitor"
+                "Sentry2::kTvMonitor"
             ]
         ]
     },

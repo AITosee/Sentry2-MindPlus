@@ -172,7 +172,7 @@ namespace Sentry2 {
         Generator.addCode([`sentry.GetValue(Sentry2::kVisionQrCode,${obj},(int)${num})`, Generator.ORDER_UNARY_POSTFIX]);
     }
 
-    //% block="  Sentry2   algo QrCode   string   of decoding result" blockType="reporter"
+    //% block="  Sentry2   algo QrCode   string of decoding result" blockType="reporter"
     export function GetQrCodeValueStr(parameter: any) {
 
         Generator.addCode([`String(sentry.GetQrCodeValueStr())`, Generator.ORDER_UNARY_POSTFIX]);
@@ -180,7 +180,7 @@ namespace Sentry2 {
 
     //% block="  Sentry2   algo [VISION_TYPE]    [OBJ_INFO] of result [NUM]" blockType="reporter"
     //% VISION_TYPE.shadow="dropdown" VISION_TYPE.options="VISION_TYPE_CUSTOM"
-    //% NUM.shadow="number"  NUM.defl=0
+    //% NUM.shadow="number"  NUM.defl=1
     //% OBJ_INFO.shadow="dropdown" OBJ_INFO.options="OBJ_INFO_CUSTOM"    
     export function GetCustomValue(parameter: any) {
 

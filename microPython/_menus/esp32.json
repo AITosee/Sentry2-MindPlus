@@ -138,16 +138,17 @@
                 "sentry2_vision_e.kVisionCustom"
             ]
         ],
-        "default_SetVisionParam_VISION_TYPE": "sentry2_vision_e.kVisionCustom"
+        "default_SetVisionParam_VISION_TYPE": "sentry2_vision_e.kVisionCustom",
+        "default_GetCustomValue_VISION_TYPE": "sentry2_vision_e.kVisionCustom"
     },
     "VISION_STA": {
         "menu": [
             [
-                "Open",
+                "run",
                 "ON"
             ],
             [
-                "Close",
+                "stop",
                 "OFF"
             ]
         ]
@@ -179,23 +180,23 @@
     "OBJ_INFO_CUSTOM": {
         "menu": [
             [
-                "Value1",
+                "returnValue1",
                 "sentry_obj_info_e.kXValue"
             ],
             [
-                "Value2",
+                "returnValue2",
                 "sentry_obj_info_e.kYValue"
             ],
             [
-                "Value3",
+                "returnValue3",
                 "sentry_obj_info_e.kWidthValue"
             ],
             [
-                "Value4",
+                "returnValue4",
                 "sentry_obj_info_e.kHeightValue"
             ],
             [
-                "Value5",
+                "returnValue5",
                 "sentry_obj_info_e.kLabel"
             ]
         ]
