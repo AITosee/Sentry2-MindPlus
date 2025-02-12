@@ -8,6 +8,22 @@
             [
                 "Serial",
                 "Serial"
+            ],
+            [
+                "softwareSerial1",
+                "softwareSerial1"
+            ],
+            [
+                "softwareSerial2",
+                "softwareSerial2"
+            ],
+            [
+                "softwareSerial3",
+                "softwareSerial3"
+            ],
+            [
+                "softwareSerial4",
+                "softwareSerial4"
             ]
         ]
     },
