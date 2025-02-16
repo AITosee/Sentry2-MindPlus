@@ -44,6 +44,17 @@
   "Sentry2.VISION_TYPE_CUSTOM.QrCode|menu": "二维码",
   "Sentry2.VISION_TYPE_CUSTOM.Motion|menu": "运动物体",
   "Sentry2.VISION_TYPE_CUSTOM.Custom|menu": "自定义",
+  "Sentry2.VISION_TYPE_NUM.Color|menu": "颜色识别",
+  "Sentry2.VISION_TYPE_NUM.Blob|menu": "色块检测",
+  "Sentry2.VISION_TYPE_NUM.AprilTag|menu": "标签识别",
+  "Sentry2.VISION_TYPE_NUM.Line|menu": "线条检测",
+  "Sentry2.VISION_TYPE_NUM.Learning|menu": "深度学习",
+  "Sentry2.VISION_TYPE_NUM.Card|menu": "卡片识别",
+  "Sentry2.VISION_TYPE_NUM.Face|menu": "人脸识别",
+  "Sentry2.VISION_TYPE_NUM.20Classes|menu": "20类物体",
+  "Sentry2.VISION_TYPE_NUM.QrCode|menu": "二维码",
+  "Sentry2.VISION_TYPE_NUM.Motion|menu": "运动物体",
+  "Sentry2.VISION_TYPE_NUM.Custom|menu": "自定义",
   "Sentry2.SetParamNum|block": "设置  Sentry  [VISION_TYPE]  [NUM] 组参数",
   "Sentry2.SetColorParam|block": "设置   Sentry2   颜色识别  中心横坐标[XVALUE] 中心纵坐标[YVALUE] 宽度[WIDTH]高度[HIGHT] 参数组[NUM]",
   "Sentry2.SetBlobParam|block": "设置   Sentry2   色块检测  最小宽度[WIDTH] 最小高度[HIGHT] 颜色[COLOR_LABLE] 参数组[NUM]",
@@ -117,5 +128,5 @@
   "Sentry2.Class20_LABLE.Sheep|menu": "羊",
   "Sentry2.Class20_LABLE.Sofa|menu": "沙发",
   "Sentry2.Class20_LABLE.Train|menu": "火车",
-  "Sentry2.Class20_LABLE.TvMonitor|menu": "监视器"
+  "Sentry2.Class20_LABLE.TvMonitor|menu": "显示器"
 }

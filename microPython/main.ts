@@ -44,7 +44,7 @@ namespace Sentry2 {
     }
 
     //% block=" Set   Sentry2   algo[VISION_TYPE]    [NUM] sets of params" blockType="command"
-    //% VISION_TYPE.shadow="dropdown" VISION_TYPE.options="VISION_TYPE_CUSTOM" VISION_TYPE.defl="Sentry2::kVisionColor"
+    //% VISION_TYPE.shadow="dropdown" VISION_TYPE.options="VISION_TYPE_NUM"
     //% NUM.shadow="range"   NUM.params.min=1    NUM.params.max=25    NUM.defl=1
     export function SetParamNum(parameter: any) {
 

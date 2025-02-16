@@ -115,6 +115,22 @@
             ]
         ]
     },
+    "VISION_TYPE_NUM": {
+        "menu": [
+            [
+                "Color",
+                "sentry2_vision_e.kVisionColor"
+            ],
+            [
+                "Blob",
+                "sentry2_vision_e.kVisionBlob"
+            ],
+            [
+                "Custom",
+                "sentry2_vision_e.kVisionCustom"
+            ]
+        ]
+    },
     "VISION_TYPE_CUSTOM": {
         "menu": [
             [
