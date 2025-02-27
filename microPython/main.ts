@@ -120,7 +120,7 @@ namespace Sentry2 {
     export function GetColorValue(parameter: any) {
 
         let num = parameter.NUM.code;
-        let obj = parameter.OBJ_INFO_COLOR.code;
+        let obj = parameter.OBJ_INFO.code;
         Generator.addCode([`sentry.GetValue(sentry2_vision_e.kVisionColor,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
     }
     
@@ -142,7 +142,7 @@ namespace Sentry2 {
     export function GetLineValue(parameter: any) {
 
         let num = parameter.NUM.code;
-        let obj = parameter.OBJ_INFO_LINE.code;
+        let obj = parameter.OBJ_INFO.code;
         Generator.addCode([`sentry.GetValue(sentry2_vision_e.kVisionLine,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
     }
     
@@ -152,7 +152,7 @@ namespace Sentry2 {
     export function GetQrCodeValue(parameter: any) {
 
         let num = parameter.NUM.code;
-        let obj = parameter.OBJ_INFO_LINE.code;
+        let obj = parameter.OBJ_INFO.code;
         Generator.addCode([`sentry.GetValue(sentry2_vision_e.kVisionQrCode,${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
     }
  
@@ -170,7 +170,7 @@ namespace Sentry2 {
 
         let vision_type = parameter.VISION_TYPE.code;
         let num = parameter.NUM.code;
-        let obj = parameter.OBJ_INFO_CUSTOM.code;
+        let obj = parameter.OBJ_INFO.code;
         Generator.addCode([`sentry.GetValue(${vision_type},${obj},${num})`, Generator.ORDER_UNARY_POSTFIX]);
     }
 
