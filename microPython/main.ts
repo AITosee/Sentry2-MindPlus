@@ -103,7 +103,7 @@ namespace Sentry2 {
         let h = parameter.HIGHT.code;
         let l = parameter.COLOR_LABLE.code;
 
-        Generator.addCode(`sentry.SetParam(${vision_type},[${x}, ${y}, ${w}, ${h}, 0],${num})`);
+        Generator.addCode(`sentry.SetParam(${vision_type},[${x}, ${y}, ${w}, ${h}, ${l}],${num})`);
     }
 
     //% block="  Sentry2   algo[VISION_TYPE]   num of results" blockType="reporter" 
