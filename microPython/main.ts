@@ -159,7 +159,7 @@ namespace Sentry2 {
     //% block="  Sentry2   algo QrCode   string of decoding result" blockType="reporter"
     export function GetQrCodeValueStr(parameter: any) {
 
-        Generator.addCode([`sentry.GetQrCodeValueStr()`, Generator.ORDER_UNARY_POSTFIX]);
+        Generator.addCode([`sentry.GetQrCodeValue()`, Generator.ORDER_UNARY_POSTFIX]);
     }
     
     //% block="  Sentry2   algo [VISION_TYPE]    [OBJ_INFO] of result [NUM]" blockType="reporter"

@@ -168,36 +168,6 @@ class color_label_e:
     kColorBlue = 5
     kColorYellow = 6
 
-# Sentry1 vision
-class sentry1_vision_e:
-    kVisionColor = 1
-    kVisionBlob = 2
-    kVisionBall = 3
-    kVisionLine = 4
-    kVisionCard = 6
-    kVisionBody = 7
-    kVisionMaxType = 8
-
-# Sentry1 card label
-class sentry1_card_label_e:
-    kCardForward = 1
-    kCardLeft = 2
-    kCardRight = 3
-    kCardTurnAround = 4
-    kCardPark = 5
-
-class sentry1_ball_label_e:
-    kBallTableTennis = 1
-    kBallTennis = 2
-
-# Sentry1 shape label
-class sentry1_shape_card_e:
-    kCardCheck = 11
-    kCardCross = 12
-    kCardCircle = 13
-    kCardSquare = 14
-    kCardTriangle = 15
-
 # Sentry2 vision
 class sentry2_vision_e:
     kVisionColor = 1
@@ -656,9 +626,9 @@ class SentryUartMethod:
             elif err == SENTRY_PROTOC_TIMEOUT:
                 try_time += 1
                 if try_time > 3:
-                    return SENTRY_READ_TIMEOUT
+                    return (SENTRY_READ_TIMEOUT, 0)
             else:
-                return SENTRY_FAIL
+                return (SENTRY_FAIL,0)
 
     def Read(self, vision_type, vision_state):
 
@@ -800,7 +770,7 @@ class SentryBase:
         self.__img_w = 0
         self.__img_h = 0
         self.__debug = None
-        self.__vision_states = [None]*SENTRY_MAX_RESULT
+        self.__vision_states = [None]*sentry2_vision_e.kVisionMaxType
 
         self.SetDebug(log_level)
 
@@ -1440,11 +1410,6 @@ class SentryBase:
             err = self.__stream.Set(kRegUart, uart_reg_value)
 
         return err
-
-class Sentry1(SentryBase):
-    SENTRY1_DEVICE_ID = 0x05
-    def __init__(self, address=0x60, log_level=LOG_ERROR):
-        super().__init__(self.SENTRY1_DEVICE_ID,address,log_level)
 
 class Sentry2(SentryBase):
     SENTRY2_DEVICE_ID = 0x04
