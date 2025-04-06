@@ -362,7 +362,8 @@ class SentryI2CMethod:
     def Set(self, reg_address, value):
         data = ustruct.pack("<b", value)
         try:
-            self.__communication_port.writeto(self.__mu_address, data)
+            self.__communication_port.writeto_mem(
+                self.__mu_address, reg_address, data)
         except OSError as e:
             self.Logger(LOG_ERROR, "Set-> reg:%#x var:%#x",
                         reg_address, value)
