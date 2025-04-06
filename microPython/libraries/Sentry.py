@@ -361,8 +361,12 @@ class SentryI2CMethod:
 
     def Set(self, reg_address, value):
         data = ustruct.pack("<b", value)
-        self.__communication_port.writeto_mem(
-            self.__mu_address, reg_address, data)
+        try:
+            self.__communication_port.writeto(self.__mu_address, data)
+        except OSError as e:
+            self.Logger(LOG_ERROR, "Set-> reg:%#x var:%#x",
+                        reg_address, value)
+            return SENTRY_WRITE_TIMEOUT
 
         self.Logger(LOG_DEBUG, "set-> reg:%#x var:%#x",
                     reg_address, value)
@@ -371,8 +375,13 @@ class SentryI2CMethod:
 
     def Get(self, reg_address):
         data = ustruct.pack("<b", reg_address)
-        self.__communication_port.writeto(self.__mu_address, data)
-
+        try:
+            self.__communication_port.writeto(self.__mu_address, data)
+        except OSError as e:
+            self.Logger(LOG_ERROR, "Set-> reg:%#x var:%#x",
+                        reg_address, value)
+            return (SENTRY_WRITE_TIMEOUT, 0)
+        
         value = self.__communication_port.readfrom(
             self.__mu_address, 1)
         if value:
