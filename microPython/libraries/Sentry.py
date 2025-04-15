@@ -1,4 +1,4 @@
-__version__ = "Sentry2 v1.2.2"
+__version__ = "Sentry2 v1.2.3"
 __author__ = "weiyanfengv@gmail.com"
 __license__ = "http://unlicense.org"
 
@@ -1027,7 +1027,7 @@ class SentryBase:
             return 0
 
         vision_state = self.__vision_states[vision_type-1]
-        
+
         while SENTRY_OK != self.__SensorLockkReg(False):
             pass
 
