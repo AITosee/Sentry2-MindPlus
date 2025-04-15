@@ -1027,6 +1027,9 @@ class SentryBase:
             return 0
 
         vision_state = self.__vision_states[vision_type-1]
+        
+        while SENTRY_OK != self.__SensorLockkReg(False):
+            pass
 
         err, frame = self.__stream.Get(kRegFrameCount)
         if err:
