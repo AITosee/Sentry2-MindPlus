@@ -1,11 +1,11 @@
 {
   "name": {
-    "zh-cn": "Sentry2",
-    "en": "Sentry2"
+    "zh-cn": "Sentry2视觉传感器",
+    "en": "Sentry2 Vision Sensor"
   },
   "description": {
-    "zh-cn": "Sentry2 库文件。",
-    "en": "Sentry2 libraries."
+    "zh-cn": "Sentry2视觉传感器 库文件。",
+    "en": "Sentry2 Vision Sensor libraries."
   },
   "author": "AITosee",
   "email": "support@aitosee.com",
@@ -17,11 +17,11 @@
     "win",
     "web"
   ],
-  "version": "1.1.7",
+  "version": "2.0.11",
   "asset": {
     "arduinoC": {
       "dir": "arduinoC/",
-      "version": "v1.3.3",
+      "version": "v1.3.9",
       "board": [
         "arduino",
         "arduinonano",
