@@ -1,4 +1,4 @@
-__version__ = "Sentry2 v1.2.3"
+__version__ = "Sentry2 v1.2.4"
 __author__ = "weiyanfengv@gmail.com"
 __license__ = "http://unlicense.org"
 
