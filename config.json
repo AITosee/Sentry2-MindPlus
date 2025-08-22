@@ -17,7 +17,7 @@
     "win",
     "web"
   ],
-  "version": "2.1.0",
+  "version": "2.2.0",
   "asset": {
     "arduinoC": {
       "dir": "arduinoC/",
@@ -30,6 +30,7 @@
         "maqueen",
         "esp32",
         "firebeetleesp32",
+        "firebeetleesp32e",
         "telloesp32",
         "leonardo"
       ],
