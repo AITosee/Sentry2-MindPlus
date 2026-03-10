@@ -18,14 +18,14 @@ namespace Sentry2 {
 
         Generator.addImport("from Sentry import *");
         Generator.addDeclaration(`sentryObject`, `sentry = Sentry2(${addr})`, true);
-        Generator.addCode(`sentry.begin(${mode})`);
+        Generator.addCode(`while SENTRY_OK != sentry.begin(${mode}): pass`);
     }
 
     //% block=" Set   Sentry2   white balance mode [AWB]" blockType="command"
     //% AWB.shadow="dropdown" AWB.options="AWB" 
     export function CameraSetAwb(parameter: any) {
         let awb = parameter.AWB.code;
-        Generator.addCode(`sentry.CameraSetAwb(${awb})`);
+        Generator.addCode(`while SENTRY_OK != sentry.CameraSetAwb(${awb}): pass`);
     }
 
     //% block=" Set   Sentry2   [VISION_STA]   algo [VISION_TYPE]" blockType="command"
@@ -37,9 +37,9 @@ namespace Sentry2 {
         let vision_sta = parameter.VISION_STA.code;
 
         if (vision_sta == "ON") {
-            Generator.addCode(`sentry.VisionBegin(${vision_type})`);
+            Generator.addCode(`while SENTRY_OK != sentry.VisionBegin(${vision_type}): pass`);
         } else {
-            Generator.addCode(`sentry.VisionEnd(${vision_type})`);
+            Generator.addCode(`while SENTRY_OK != sentry.VisionEnd(${vision_type}): pass`);
         }
     }
 
@@ -50,7 +50,7 @@ namespace Sentry2 {
 
         let vision_type = parameter.VISION_TYPE.code;
         let num = parameter.NUM.code;
-        Generator.addCode(`sentry.SetParamNum(${vision_type},${num})`);
+        Generator.addCode(`while SENTRY_OK != sentry.SetParamNum(${vision_type},${num}): pass`);
     }
 
     //% block=" Set   Sentry2   algo Color   x-coord[XVALUE] y-coord [YVALUE] width[WIDTH] height[HIGHT] paramset[NUM]"
@@ -67,7 +67,7 @@ namespace Sentry2 {
         let w = parameter.WIDTH.code;
         let h = parameter.HIGHT.code;
 
-        Generator.addCode(`sentry.SetParam(sentry2_vision_e.kVisionColor,[${x}, ${y}, ${w}, ${h}, 0],${num})`);
+        Generator.addCode(`while SENTRY_OK != sentry.SetParam(sentry2_vision_e.kVisionColor,[${x}, ${y}, ${w}, ${h}, 0],${num}): pass`);
     }
 
     
@@ -83,7 +83,7 @@ namespace Sentry2 {
         let h = parameter.HIGHT.code;
         let l = parameter.COLOR_LABLE.code;
 
-        Generator.addCode(`sentry.SetParam(sentry2_vision_e.kVisionBlob,[0, 0, ${w}, ${h}, ${l}],${num})`);
+        Generator.addCode(`while SENTRY_OK != sentry.SetParam(sentry2_vision_e.kVisionBlob,[0, 0, ${w}, ${h}, ${l}],${num}): pass`);
     }
     
     //% block=" Set   Sentry2   algo [VISION_TYPE]   param1 [XVALUE] param2 [YVALUE] param3 [WIDTH] param4 [HIGHT] param5 [COLOR_LABLE] paramset[NUM]"
@@ -103,7 +103,7 @@ namespace Sentry2 {
         let h = parameter.HIGHT.code;
         let l = parameter.COLOR_LABLE.code;
 
-        Generator.addCode(`sentry.SetParam(${vision_type},[${x}, ${y}, ${w}, ${h}, ${l}],${num})`);
+        Generator.addCode(`while SENTRY_OK != sentry.SetParam(${vision_type},[${x}, ${y}, ${w}, ${h}, ${l}],${num}): pass`);
     }
 
     //% block="  Sentry2   algo[VISION_TYPE]   num of results" blockType="reporter" 

@@ -1,5 +1,4 @@
-__version__ = "Sentry2 v1.2.4"
-__author__ = "weiyanfengv@gmail.com"
+__version__ = "Sentry2 v1.2.5"
 __license__ = "http://unlicense.org"
 
 import ustruct  # pylint: disable=import-error
@@ -168,8 +167,44 @@ class color_label_e:
     kColorBlue = 5
     kColorYellow = 6
 
+# Sentry1 vision
+class sentry1_vision_e:
+    kVisionColor = 1
+    kVisionBlob = 2
+    kVisionBall = 3
+    kVisionLine = 4
+    kVisionCard = 6
+    kVisionBody = 7
+    kVisionMaxType = 8
+    kVisionQrCode = 9
+    kVisionMotionDetect = 11
+    
+# Sentry1 card label
+class sentry1_card_label_e:
+    kCardForward = 1
+    kCardLeft = 2
+    kCardRight = 3
+    kCardTurnAround = 4
+    kCardPark = 5
+
+class sentry1_ball_label_e:
+    kBallTableTennis = 1
+    kBallTennis = 2
+
+# Sentry1 shape label
+class sentry1_shape_card_e:
+    kCardCheck = 11
+    kCardCross = 12
+    kCardCircle = 13
+    kCardSquare = 14
+    kCardTriangle = 15
+
+class _sentry2_vision_e_out:
+    kVision20Classes = 8
+    kVisionMotionDetect = 11
+
 # Sentry2 vision
-class sentry2_vision_e:
+class sentry2_vision_e(_sentry2_vision_e_out):
     kVisionColor = 1
     kVisionBlob = 2
     kVisionAprilTag = 3
@@ -177,12 +212,11 @@ class sentry2_vision_e:
     kVisionLearning = 5
     kVisionCard = 6
     kVisionFace = 7
-    kVision20Classes = 8
+    kVision20Class = 8
     kVisionQrCode = 9
-    kVisionObjTrack = 10
-    kVisionMotionDetect = 11
-    kVisionCustom= 12
-    kVisionMaxType = 13
+    kVisionCustom = 10
+    kVisionMotion = 11
+    kVisionMaxType = 12
 
 # Sentry card label
 class sentry2_card_label_e:
@@ -361,13 +395,8 @@ class SentryI2CMethod:
 
     def Set(self, reg_address, value):
         data = ustruct.pack("<b", value)
-        try:
-            self.__communication_port.writeto_mem(
-                self.__mu_address, reg_address, data)
-        except OSError as e:
-            self.Logger(LOG_ERROR, "Set-> reg:%#x var:%#x",
-                        reg_address, value)
-            return SENTRY_WRITE_TIMEOUT
+        self.__communication_port.writeto_mem(
+            self.__mu_address, reg_address, data)
 
         self.Logger(LOG_DEBUG, "set-> reg:%#x var:%#x",
                     reg_address, value)
@@ -376,13 +405,8 @@ class SentryI2CMethod:
 
     def Get(self, reg_address):
         data = ustruct.pack("<b", reg_address)
-        try:
-            self.__communication_port.writeto(self.__mu_address, data)
-        except OSError as e:
-            self.Logger(LOG_ERROR, "Set-> reg:%#x var:%#x",
-                        reg_address, value)
-            return (SENTRY_WRITE_TIMEOUT, 0)
-        
+        self.__communication_port.writeto(self.__mu_address, data)
+
         value = self.__communication_port.readfrom(
             self.__mu_address, 1)
         if value:
@@ -536,13 +560,17 @@ class SentryUartMethod:
 
         data_len = 0
         data_list = []
-        for _ in range(self.__communication_port.any()):
-            data_list.append(self.__communication_port.read(1)[0])
-            if data_list[0] == SENTRY_PROTOC_START:
-                data_list.append(self.__communication_port.read(1)[0])
+        while self.__communication_port.any() > 0:
+            data=self.__communication_port.read(1)
+            if len(data_list) > 0 and data_list[0] == SENTRY_PROTOC_START:
+                data_list.append(data[0])
                 data_len = data_list[1]
                 data_list += list(self.__communication_port.read(data_len-2))
                 break
+            elif data[0] == SENTRY_PROTOC_START:
+                data_list.append(data[0])
+            else:
+                continue
 
         if self.__logger:
             self.Logger(LOG_DEBUG, "    rev-> %s",
@@ -636,9 +664,9 @@ class SentryUartMethod:
             elif err == SENTRY_PROTOC_TIMEOUT:
                 try_time += 1
                 if try_time > 3:
-                    return (SENTRY_READ_TIMEOUT, 0)
+                    return SENTRY_READ_TIMEOUT
             else:
-                return (SENTRY_FAIL,0)
+                return SENTRY_FAIL
 
     def Read(self, vision_type, vision_state):
 
@@ -665,7 +693,7 @@ class SentryUartMethod:
 
         try_time = 0
         vision_state.detect = 0
-        v_start_id = -1
+
         while True:
             err, data = self.__protocol_read()
             #print("read",hex(err), hex(data[0]))
@@ -675,8 +703,6 @@ class SentryUartMethod:
                         vision_state.frame = data[2]
                         start_id = data[4]
                         stop_id = data[5]
-                        if v_start_id == -1:
-                            v_start_id = start_id
 
                         if SENTRY_MAX_RESULT < stop_id:
                             return (SENTRY_UNSUPPORT_PARAM, vision_state)
@@ -687,9 +713,9 @@ class SentryUartMethod:
                         if sentry2_vision_e.kVisionQrCode == vision_type:
                             vision_state.detect = 1
                         else:
-                            vision_state.detect = stop_id-v_start_id+1
+                            vision_state.detect = stop_id-start_id+1
 
-                        for i in range(stop_id-start_id+1):
+                        for i in range(vision_state.detect):
                             v_id = i+start_id-1
                             vision_state.result[v_id].data1 = data[10 *
                                                                    i + 6] << 8 | data[10 * i + 7]
@@ -780,7 +806,7 @@ class SentryBase:
         self.__img_w = 0
         self.__img_h = 0
         self.__debug = None
-        self.__vision_states = [None]*sentry2_vision_e.kVisionMaxType
+        self.__vision_states = [None]*SENTRY_MAX_RESULT
 
         self.SetDebug(log_level)
 
@@ -935,7 +961,7 @@ class SentryBase:
         return err
 
     def SetParam(self, vision_type, param: list, param_id):
-        if param_id < 0 or param_id > SENTRY_MAX_RESULT:
+        if param_id < 0 or param_id >= SENTRY_MAX_RESULT:
             return SENTRY_FAIL
 
         params = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -1080,9 +1106,9 @@ class SentryBase:
             return vision_state.result[obj_id].data4
         elif object_inf == sentry_obj_info_e.kLabel:
             return vision_state.result[obj_id].data5
-        elif object_inf == sentry_obj_info_e.kGValue:
-            return vision_state.result[obj_id].data1
         elif object_inf == sentry_obj_info_e.kRValue:
+            return vision_state.result[obj_id].data1
+        elif object_inf == sentry_obj_info_e.kGValue:
             return vision_state.result[obj_id].data2
         elif object_inf == sentry_obj_info_e.kBValue:
             return vision_state.result[obj_id].data3
@@ -1423,6 +1449,11 @@ class SentryBase:
             err = self.__stream.Set(kRegUart, uart_reg_value)
 
         return err
+
+class Sentry1(SentryBase):
+    SENTRY1_DEVICE_ID = 0x05
+    def __init__(self, address=0x60, log_level=LOG_ERROR):
+        super().__init__(self.SENTRY1_DEVICE_ID,address,log_level)
 
 class Sentry2(SentryBase):
     SENTRY2_DEVICE_ID = 0x04
